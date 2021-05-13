@@ -1,0 +1,28 @@
+{
+  "item.chemiscraft.iron_stand": "Iron stand",
+  "item.chemiscraft.iron_stand_ring": "Iron stand-iron ring",
+  "item.chemiscraft.iron_stand_base": "Iron stand-base",
+  "item.chemiscraft.iron_stand_clip": "Iron stand-iron clip",
+  "item.chemiscraft.iron_stand_rod": "Iron stand-rod",
+  "item.chemiscraft.iron_ring": "Iron ring",
+
+  "item.chemiscraft.hydrogen_1": "Hydrogen-1",
+  "item.chemiscraft.hydrogen_2": "Hydrogen-2",
+  "item.chemiscraft.hydrogen_3": "Hydrogen-3",
+  "item.chemiscraft.hydrogen_4": "Hydrogen-4",
+  "item.chemiscraft.hydrogen_5": "Hydrogen-5",
+  "item.chemiscraft.hydrogen_6": "Hydrogen-6",
+  "item.chemiscraft.hydrogen_7": "Hydrogen-7",
+
+  "item.chemiscraft.helium_3": "Helium-3",
+  "item.chemiscraft.helium_4": "Helium-4",
+  "item.chemiscraft.helium_5": "Helium-5",
+  "item.chemiscraft.helium_6": "Helium-6",
+  "item.chemiscraft.helium_7": "Helium-7",
+  "item.chemiscraft.helium_8": "Helium-8",
+  "item.chemiscraft.helium_9": "Helium-9",
+  "item.chemiscraft.helium_10": "Helium-10",
+
+  "itemGroup.chemiscraft.element_group": "ChemisCraft-Element",
+  "itemGroup.chemiscraft.equipment_group": "ChemisCraft-Equipment"
+}
