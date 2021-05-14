@@ -1,0 +1,6 @@
+{
+  "type": "chemiscraft:cworldgen",
+  "generator": {
+    "type": "minecraft:noise"
+  }
+}
