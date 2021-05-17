@@ -33,6 +33,11 @@ public class Items {
     public static final Item HELIUM_9 = of("helium_9", new Item(settings()));
     public static final Item HELIUM_10 = of("helium_10", new Item(settings()));
 
+    /**
+     * Load this class
+     */
+    public static void register() { }
+
     private static Item.Settings settings() {
         return new Item.Settings().group(ItemGroups.ELEMENT);
     }
