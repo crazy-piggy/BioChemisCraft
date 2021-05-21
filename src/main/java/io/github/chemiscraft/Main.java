@@ -2,6 +2,10 @@ package io.github.chemiscraft;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -15,7 +19,6 @@ public class Main implements ModInitializer {
 	public static final ItemGroup EQUIPMENT = FabricItemGroupBuilder.build(new Identifier("chemiscraft","equipment_group"), () -> new ItemStack(Main.HELIUM_3));
 	//Item
 	//Equipment
-	public static final Item IRON_STAND = new Item (new Item.Settings().group(EQUIPMENT));
 	public static final Item IRON_STAND_RING = new Item (new Item.Settings().group(EQUIPMENT));
 	public static final Item IRON_STAND_BASE = new Item (new Item.Settings().group(EQUIPMENT));
 	public static final Item IRON_STAND_CLIP = new Item (new Item.Settings().group(EQUIPMENT));
@@ -39,10 +42,16 @@ public class Main implements ModInitializer {
 	public static final Item HELIUM_9 = new Item (new Item.Settings().group(ELEMENT));
 	public static final Item HELIUM_10 = new Item (new Item.Settings().group(ELEMENT));
 
+	//Block
+	public static final Block IRON_STAND = new Block(FabricBlockSettings.of(Material.METAL).hardness(0.0f));
+
 	@Override
 	public void onInitialize() {
+		//Block
+		Registry.register(Registry.BLOCK, new Identifier(MODID, "iron_stand"), IRON_STAND);
+		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand"), new BlockItem(IRON_STAND, new Item.Settings().group(EQUIPMENT)));
 		//Equipment
-		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand"), IRON_STAND);
+
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand_ring"), IRON_STAND_RING);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand_base"), IRON_STAND_BASE);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand_clip"), IRON_STAND_CLIP);
