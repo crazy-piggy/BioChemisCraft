@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AB ",
+    "AC ",
+    "ADD"
+  ],
+  "key": {
+    "A": {
+      "item": "chemiscraft:iron_stand_rod"
+    },
+    "B": {
+      "item": "chemiscraft:iron_stand_clip"
+    },
+    "C": {
+      "item": "chemiscraft:iron_stand_ring"
+    },
+    "D": {
+      "item": "chemiscraft:iron_stand_base"
+    }
+  },
+  "result": {
+    "item": "chemiscraft:iron_stand",
+    "count": 1
+  }
+}
