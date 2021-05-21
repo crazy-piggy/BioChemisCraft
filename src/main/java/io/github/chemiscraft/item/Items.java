@@ -2,19 +2,21 @@
 package io.github.chemiscraft.item;
 
 import io.github.chemiscraft.Main;
+import io.github.chemiscraft.block.Blocks;
 
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class Items {
     /** Equipment */
-    public static final Item IRON_STAND = of("iron_stand", new Item(settings()));
-    public static final Item IRON_STAND_RING = of("iron_stand_ring", new Item(settings()));
-    public static final Item IRON_STAND_BASE = of("iron_stand_base", new Item(settings()));
-    public static final Item IRON_STAND_CLIP = of("iron_stand_clip", new Item(settings()));
-    public static final Item IRON_STAND_ROD = of("iron_stand_rod", new Item(settings()));
-    public static final Item IRON_RING = of("iron_ring", new Item(settings()));
+    public static final BlockItem IRON_STAND = of("iron_stand", new BlockItem(Blocks.IRON_STAND, settingsEq()));
+    public static final Item IRON_STAND_RING = of("iron_stand_ring", new Item(settingsEq()));
+    public static final Item IRON_STAND_BASE = of("iron_stand_base", new Item(settingsEq()));
+    public static final Item IRON_STAND_CLIP = of("iron_stand_clip", new Item(settingsEq()));
+    public static final Item IRON_STAND_ROD = of("iron_stand_rod", new Item(settingsEq()));
+    public static final Item IRON_RING = of("iron_ring", new Item(settingsEq()));
     /** Hydrogen */
     public static final Item HYDROGEN_1 = of("hydrogen_1", new Item(settings()));
     public static final Item HYDROGEN_2 = of("hydrogen_2", new Item(settings()));
@@ -40,6 +42,10 @@ public class Items {
 
     private static Item.Settings settings() {
         return new Item.Settings().group(ItemGroups.ELEMENT);
+    }
+
+    private static Item.Settings settingsEq() {
+        return new Item.Settings().group(ItemGroups.EQUIPMENT);
     }
 
     private static <T extends Item> T of(String name, T item) {
