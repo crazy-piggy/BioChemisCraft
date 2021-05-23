@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "chemiscraft:block/iron_stand",
-		"particle": "chemiscraft:block/iron_stand"
+		"0": "chemiscraft:item/iron_stand",
+		"particle": "chemiscraft:item/iron_stand"
 	},
 	"elements": [
 		{
@@ -255,7 +255,35 @@
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"translation": [0, 8, 0]
+			"rotation": [0, -180, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, -180, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -180, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -180, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"translation": [0, 4.25, 0]
+		},
+		"gui": {
+			"rotation": [25, -45, 0],
+			"translation": [0, 0.75, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"head": {
+			"translation": [0.5, 14.25, 0]
+		},
+		"fixed": {
+			"rotation": [0, -180, 0],
+			"translation": [0, 0, -5]
 		}
 	},
 	"groups": [0, 1,
