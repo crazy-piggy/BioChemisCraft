@@ -3,20 +3,25 @@ package io.github.chemiscraft;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.item.*;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 
 public class Main implements ModInitializer {
 	public static final String MODID = "chemiscraft";
 	//Item Group
-	public static final ItemGroup ELEMENT = FabricItemGroupBuilder.build(new Identifier("chemiscraft", "element_group"), () -> new ItemStack(Main.HYDROGEN_1));
-	public static final ItemGroup EQUIPMENT = FabricItemGroupBuilder.build(new Identifier("chemiscraft","equipment_group"), () -> new ItemStack(Main.HELIUM_3));
+	public static final ItemGroup ELEMENT = FabricItemGroupBuilder.build(new Identifier(MODID, "element_group"), () -> new ItemStack(Main.HYDROGEN_1));
+	public static final ItemGroup EQUIPMENT = FabricItemGroupBuilder.build(new Identifier(MODID,"equipment_group"), () -> new ItemStack(Main.IRON_STAND));
 	//Item
 	//Equipment
 	public static final Item IRON_STAND_RING = new Item (new Item.Settings().group(EQUIPMENT));
@@ -51,7 +56,6 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.BLOCK, new Identifier(MODID, "iron_stand"), IRON_STAND);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand"), new BlockItem(IRON_STAND, new Item.Settings().group(EQUIPMENT)));
 		//Equipment
-
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand_ring"), IRON_STAND_RING);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand_base"), IRON_STAND_BASE);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand_clip"), IRON_STAND_CLIP);
@@ -74,6 +78,5 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MODID, "helium_8"), HELIUM_8);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "helium_9"), HELIUM_9);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "helium_10"), HELIUM_10);
-
 	}
 }
