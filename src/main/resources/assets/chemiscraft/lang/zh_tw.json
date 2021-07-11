@@ -1,0 +1,29 @@
+{
+  "block.chemiscraft.iron_stand": "鐵架台",
+
+  "item.chemiscraft.iron_stand_ring": "鐵架台-鐵圈",
+  "item.chemiscraft.iron_stand_base": "鐵架台-底座",
+  "item.chemiscraft.iron_stand_clip": "鐵架台-鉄夾",
+  "item.chemiscraft.iron_stand_rod": "鐵架台-鐵桿",
+  "item.chemiscraft.iron_ring": "鐵圈",
+
+  "item.chemiscraft.hydrogen_1": "氫-1",
+  "item.chemiscraft.hydrogen_2": "氫-2",
+  "item.chemiscraft.hydrogen_3": "氫-3",
+  "item.chemiscraft.hydrogen_4": "氫-4",
+  "item.chemiscraft.hydrogen_5": "氫-5",
+  "item.chemiscraft.hydrogen_6": "氫-6",
+  "item.chemiscraft.hydrogen_7": "氫-7",
+
+  "item.chemiscraft.helium_3": "氦-3",
+  "item.chemiscraft.helium_4": "氦-4",
+  "item.chemiscraft.helium_5": "氦-5",
+  "item.chemiscraft.helium_6": "氦-6",
+  "item.chemiscraft.helium_7": "氦-7",
+  "item.chemiscraft.helium_8": "氦-8",
+  "item.chemiscraft.helium_9": "氦-9",
+  "item.chemiscraft.helium_10": "氦-10",
+
+  "itemGroup.chemiscraft.element_group": "化學工藝-元素",
+  "itemGroup.chemiscraft.equipment_group": "化學工藝-設備"
+}
