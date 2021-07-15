@@ -1,7 +1,8 @@
 {
   "variants": {
-    "": {
-      "model": "chemiscraft:block/iron_stand"
-    }
+    "facing=north": { "model": "chemiscraft:block/iron_stand" },
+    "facing=east":  { "model": "chemiscraft:block/iron_stand", "y": 90},
+    "facing=south": { "model": "chemiscraft:block/iron_stand", "y": 180 },
+    "facing=west":  { "model": "chemiscraft:block/iron_stand", "y": 270 }
   }
 }
