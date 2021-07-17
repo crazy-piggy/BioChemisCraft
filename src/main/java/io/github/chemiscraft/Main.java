@@ -1,21 +1,15 @@
 package io.github.chemiscraft;
 
+import io.github.chemiscraft.blocks.Blocks;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.*;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-
-import static net.minecraft.block.FacingBlock.FACING;
 
 public class Main implements ModInitializer {
 	public static final String MODID = "chemiscraft";
@@ -47,8 +41,8 @@ public class Main implements ModInitializer {
 	public static final Item HELIUM_9 = new Item (new Item.Settings().group(ELEMENT));
 	public static final Item HELIUM_10 = new Item (new Item.Settings().group(ELEMENT));
 	/*Block*/
-	public static final Block IRON_TRIVET = new Block(FabricBlockSettings.of(Material.METAL).hardness(0.0f));
-	private static final IronStand IRON_STAND = new IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.0f));
+	public static final Blocks.IronTrivet IRON_TRIVET = new Blocks.IronTrivet(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
+	public static final Blocks.IronStand IRON_STAND = new Blocks.IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
 	@Override
 	public void onInitialize() {
 		/*Block*/
@@ -80,32 +74,4 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MODID, "helium_9"), HELIUM_9);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "helium_10"), HELIUM_10);
 	}
-	//这里会崩
-	//我也不知道为啥
-	public static class IronStand extends Block {
-		public IronStand(Settings settings){
-			super(settings);
-		}
-
-		@Override
-		protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
-			stateManager.add(Properties.HORIZONTAL_FACING);
-		}
-
-		public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos) {
-			Direction dir = state.get(FACING);
-			return switch (dir) {
-				case NORTH -> VoxelShapes.cuboid(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.5f);
-				case SOUTH -> VoxelShapes.cuboid(0.0f, 0.0f, 0.5f, 1.0f, 1.0f, 1.0f);
-				case EAST -> VoxelShapes.cuboid(0.5f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
-				case WEST -> VoxelShapes.cuboid(0.0f, 0.0f, 0.0f, 0.5f, 1.0f, 1.0f);
-				default -> VoxelShapes.fullCube();
-			};
-		}
-
-		public BlockState getPlacementState(ItemPlacementContext ctx) {
-			return (BlockState)this.getDefaultState().with(FACING, ctx.getPlayerFacing());
-		}
-	}
-	//
 }
