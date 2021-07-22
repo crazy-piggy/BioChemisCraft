@@ -1,8 +1,7 @@
-package io.github.chemiscraft.blocks;
+package io.github.chemiscraft.Blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;

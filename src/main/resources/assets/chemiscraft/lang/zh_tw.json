@@ -1,11 +1,12 @@
 {
-  "block.chemiscraft.iron_stand": "鐵架台",
+  "block.chemiscraft.iron_stand": "鉄架台",
+  "block.chemiscraft.iron_trivet": "鉄三角架",
 
-  "item.chemiscraft.iron_stand_ring": "鐵架台-鐵圈",
-  "item.chemiscraft.iron_stand_base": "鐵架台-底座",
-  "item.chemiscraft.iron_stand_clip": "鐵架台-鉄夾",
-  "item.chemiscraft.iron_stand_rod": "鐵架台-鐵桿",
-  "item.chemiscraft.iron_ring": "鐵圈",
+  "item.chemiscraft.iron_stand_ring": "鉄架台-鐵圈",
+  "item.chemiscraft.iron_stand_base": "鉄架台-底座",
+  "item.chemiscraft.iron_stand_clip": "鉄架台-鉄夾",
+  "item.chemiscraft.iron_stand_rod": "鉄架台-鉄桿",
+  "item.chemiscraft.iron_ring": "鉄圈",
 
   "item.chemiscraft.hydrogen_1": "氫-1",
   "item.chemiscraft.hydrogen_2": "氫-2",
@@ -23,6 +24,10 @@
   "item.chemiscraft.helium_8": "氦-8",
   "item.chemiscraft.helium_9": "氦-9",
   "item.chemiscraft.helium_10": "氦-10",
+
+  "item.chemiscraft.white_phosphorus": "白磷",
+
+  "item.chemiscraft.phosphorus.tooltip": "§m§o一 鍵 回 城",
 
   "itemGroup.chemiscraft.element_group": "化學工藝-元素",
   "itemGroup.chemiscraft.equipment_group": "化學工藝-設備"

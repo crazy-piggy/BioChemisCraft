@@ -1,5 +1,6 @@
 {
   "block.chemiscraft.iron_stand": "Iron stand",
+  "block.chemiscraft.iron_trivet": "Iron trivet",
 
   "item.chemiscraft.iron_stand_ring": "Iron stand-iron ring",
   "item.chemiscraft.iron_stand_base": "Iron stand-base",
@@ -23,6 +24,10 @@
   "item.chemiscraft.helium_8": "Helium-8",
   "item.chemiscraft.helium_9": "Helium-9",
   "item.chemiscraft.helium_10": "Helium-10",
+
+  "item.chemiscraft.white_phosphorus": "White phosphorus",
+
+  "item.chemiscraft.phosphorus.tooltip": "§m§oBack to spawn point with one click.",
 
   "itemGroup.chemiscraft.element_group": "ChemisCraft-Element",
   "itemGroup.chemiscraft.equipment_group": "ChemisCraft-Equipment"

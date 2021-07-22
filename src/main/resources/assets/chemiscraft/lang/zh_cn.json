@@ -25,6 +25,10 @@
   "item.chemiscraft.helium_9": "氦-9",
   "item.chemiscraft.helium_10": "氦-10",
 
+  "item.chemiscraft.white_phosphorus": "白磷",
+
+  "item.chemiscraft.phosphorus.tooltip": "§m§o一 键 回 城",
+
   "itemGroup.chemiscraft.element_group": "化学工艺-元素",
   "itemGroup.chemiscraft.equipment_group": "化学工艺-设备"
 }
