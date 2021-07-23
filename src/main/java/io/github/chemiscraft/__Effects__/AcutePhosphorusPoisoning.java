@@ -1,4 +1,4 @@
-package io.github.chemiscraft.Effects;
+package io.github.chemiscraft.__Effects__;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;

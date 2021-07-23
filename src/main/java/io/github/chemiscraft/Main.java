@@ -1,17 +1,28 @@
 package io.github.chemiscraft;
 
-import io.github.chemiscraft.Blocks.Blocks;
-import io.github.chemiscraft.Items.Phosphorus;
-import io.github.chemiscraft.Material.RodSword;
-import io.github.chemiscraft.Effects.AcutePhosphorusPoisoning;
+import io.github.chemiscraft.__Blocks__.__Block__;
+import io.github.chemiscraft.__Items__.Phosphorus;
+import io.github.chemiscraft.Materials.RodSword;
+import io.github.chemiscraft.__Effects__.AcutePhosphorusPoisoning;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.*;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.YOffset;
+import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraft.world.gen.heightprovider.UniformHeightProvider;
 
 public class Main implements ModInitializer {
 	public static final String MODID = "chemiscraft";
@@ -26,7 +37,7 @@ public class Main implements ModInitializer {
 	public static final Item IRON_STAND_ROD = new SwordItem (RodSword.INSTANCE,5,1,new Item.Settings().group(EQUIPMENT));
 	public static final Item IRON_RING = new Item (new Item.Settings().group(EQUIPMENT));
 	/*Food*/
-	public static final Phosphorus WHITE_PHOSPHORUS = new Phosphorus (new Item.Settings().group(ItemGroup.MISC).food(new FoodComponent.Builder().hunger(1).saturationModifier(1).alwaysEdible().snack().statusEffect(new StatusEffectInstance(new AcutePhosphorusPoisoning(),300,1),100.0f).build()));
+	public static final Phosphorus WHITE_PHOSPHORUS = new Phosphorus (new Item.Settings().group(ItemGroup.MISC).food(new FoodComponent.Builder().hunger(1).saturationModifier(1).alwaysEdible().snack().statusEffect(new StatusEffectInstance(new AcutePhosphorusPoisoning(),50,1/*175伤害!*/),100.0f).build()));
 	/*Hydrogen*/
 	public static final Item HYDROGEN_1 = new Item(new Item.Settings().group(ELEMENT));
 	public static final Item HYDROGEN_2 = new Item(new Item.Settings().group(ELEMENT));
@@ -45,8 +56,10 @@ public class Main implements ModInitializer {
 	public static final Item HELIUM_9 = new Item (new Item.Settings().fireproof().group(ELEMENT));
 	public static final Item HELIUM_10 = new Item (new Item.Settings().fireproof().group(ELEMENT));
 	/*Block*/
-	public static final Blocks.IronTrivet IRON_TRIVET = new Blocks.IronTrivet(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
-	public static final Blocks.IronStand IRON_STAND = new Blocks.IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
+	public static final __Block__.IronTrivet IRON_TRIVET = new __Block__.IronTrivet(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
+	public static final __Block__.IronStand IRON_STAND = new __Block__.IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
+	public static final Block PHOSPHORUS_ORG = new Block(FabricBlockSettings.of(Material.METAL).hardness(2.0f));
+	public static final Block WHITE_PHOSPHORUS_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
 	/*Effects*/
 	public static final StatusEffect ACUTE_PHOSPHORUS_POISONING = new AcutePhosphorusPoisoning();
 	@Override
@@ -56,6 +69,10 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand"), new BlockItem(IRON_STAND, new Item.Settings().group(EQUIPMENT)));
 		Registry.register(Registry.BLOCK, new Identifier(MODID, "iron_trivet"), IRON_TRIVET);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_trivet"), new BlockItem(IRON_TRIVET, new Item.Settings().group(EQUIPMENT)));
+		Registry.register(Registry.BLOCK, new Identifier(MODID, "phosphorus_org"), PHOSPHORUS_ORG);
+		Registry.register(Registry.ITEM, new Identifier(MODID, "phosphorus_org"), new BlockItem(PHOSPHORUS_ORG, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+		Registry.register(Registry.BLOCK, new Identifier(MODID, "white_phosphorus_block"), WHITE_PHOSPHORUS_BLOCK);
+		Registry.register(Registry.ITEM, new Identifier(MODID, "white_phosphorus_block"), new BlockItem(WHITE_PHOSPHORUS_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 		/*Equipment*/
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand_ring"), IRON_STAND_RING);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand_base"), IRON_STAND_BASE);
@@ -83,5 +100,11 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MODID, "white_phosphorus"), WHITE_PHOSPHORUS);
 		/*Effects*/
 		Registry.register(Registry.STATUS_EFFECT, new Identifier(MODID, "acute_phosphorus_poisoning"), ACUTE_PHOSPHORUS_POISONING);
+		/*Orgs*/
+		RegistryKey<ConfiguredFeature<?, ?>> orePhosphorusOverworld = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MODID, "ore_phosphorus_overworld"));
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, orePhosphorusOverworld.getValue(), ORE_PHOSPHORUS_OVERWORLD);
+		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, orePhosphorusOverworld);
 	}
+
+	private static final ConfiguredFeature<?, ?> ORE_PHOSPHORUS_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Main.PHOSPHORUS_ORG.getDefaultState(), 9)).range(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(0), YOffset.fixed(64)))).spreadHorizontally().repeat(128);
 }

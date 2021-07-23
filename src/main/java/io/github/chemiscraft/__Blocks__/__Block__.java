@@ -1,6 +1,5 @@
-package io.github.chemiscraft.Blocks;
+package io.github.chemiscraft.__Blocks__;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemPlacementContext;
@@ -14,14 +13,14 @@ import net.minecraft.world.BlockView;
 
 import static net.minecraft.block.FacingBlock.FACING;
 
-public class Blocks {
-    public static class IronStand extends Block {
+public class __Block__ {
+    public static class IronStand extends net.minecraft.block.Block {
         public IronStand(Settings settings){
             super(settings.nonOpaque());
         }
 
         @Override
-        protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
+        protected void appendProperties(StateManager.Builder<net.minecraft.block.Block, BlockState> stateManager) {
             stateManager.add(Properties.FACING);
         }
 
@@ -39,13 +38,13 @@ public class Blocks {
         }
     }
 
-    public static class IronTrivet extends Block {
+    public static class IronTrivet extends net.minecraft.block.Block {
         public IronTrivet(Settings settings){
             super(settings.nonOpaque());
         }
 
         @Override
-        protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
+        protected void appendProperties(StateManager.Builder<net.minecraft.block.Block, BlockState> stateManager) {
             stateManager.add(Properties.FACING);
         }
 
@@ -60,6 +59,12 @@ public class Blocks {
 
         public BlockState getPlacementState(ItemPlacementContext ctx) {
             return this.getDefaultState().with(FACING, ctx.getPlayerFacing());
+        }
+    }
+
+    public static class PhosphorusBlock extends net.minecraft.block.Block {
+        public PhosphorusBlock(Settings settings){
+            super(settings);
         }
     }
 }

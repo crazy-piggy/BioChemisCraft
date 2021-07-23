@@ -1,4 +1,4 @@
-package io.github.chemiscraft.Material;
+package io.github.chemiscraft.Materials;
 
 
 import net.minecraft.item.Items;

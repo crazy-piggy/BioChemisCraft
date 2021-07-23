@@ -1,4 +1,4 @@
-package io.github.chemiscraft.Items;
+package io.github.chemiscraft.__Items__;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
