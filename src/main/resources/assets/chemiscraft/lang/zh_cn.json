@@ -26,8 +26,10 @@
   "item.chemiscraft.helium_10": "氦-10",
 
   "item.chemiscraft.white_phosphorus": "白磷",
-  "item.chemiscraft.white_phosphorus_block": "白磷块",
   "item.chemiscraft.red_phosphorus": "红磷",
+  "block.chemiscraft.white_phosphorus_block": "白磷块",
+  "block.chemiscraft.red_phosphorus_block": "红磷块",
+  "block.chemiscraft.phosphorus_ore": "磷矿",
 
   "item.chemiscraft.phosphorus.tooltip": "§m§o一 键 回 城",
 

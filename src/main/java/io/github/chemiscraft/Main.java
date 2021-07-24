@@ -58,8 +58,9 @@ public class Main implements ModInitializer {
 	/*Block*/
 	public static final __Block__.IronTrivet IRON_TRIVET = new __Block__.IronTrivet(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
 	public static final __Block__.IronStand IRON_STAND = new __Block__.IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
-	public static final Block PHOSPHORUS_ORG = new Block(FabricBlockSettings.of(Material.METAL).hardness(2.0f));
+	public static final Block PHOSPHORUS_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(2.0f));
 	public static final Block WHITE_PHOSPHORUS_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
+	public static final Block RED_PHOSPHORUS_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
 	/*Effects*/
 	public static final StatusEffect ACUTE_PHOSPHORUS_POISONING = new AcutePhosphorusPoisoning();
 	@Override
@@ -69,10 +70,12 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand"), new BlockItem(IRON_STAND, new Item.Settings().group(EQUIPMENT)));
 		Registry.register(Registry.BLOCK, new Identifier(MODID, "iron_trivet"), IRON_TRIVET);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_trivet"), new BlockItem(IRON_TRIVET, new Item.Settings().group(EQUIPMENT)));
-		Registry.register(Registry.BLOCK, new Identifier(MODID, "phosphorus_org"), PHOSPHORUS_ORG);
-		Registry.register(Registry.ITEM, new Identifier(MODID, "phosphorus_org"), new BlockItem(PHOSPHORUS_ORG, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+		Registry.register(Registry.BLOCK, new Identifier(MODID, "phosphorus_ore"), PHOSPHORUS_ORE);
+		Registry.register(Registry.ITEM, new Identifier(MODID, "phosphorus_ore"), new BlockItem(PHOSPHORUS_ORE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 		Registry.register(Registry.BLOCK, new Identifier(MODID, "white_phosphorus_block"), WHITE_PHOSPHORUS_BLOCK);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "white_phosphorus_block"), new BlockItem(WHITE_PHOSPHORUS_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+		Registry.register(Registry.BLOCK,new Identifier(MODID, "red_phosphorus_block"),RED_PHOSPHORUS_BLOCK);
+		Registry.register(Registry.ITEM, new Identifier(MODID, "red_phosphorus_block"), new BlockItem(RED_PHOSPHORUS_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 		/*Item*/
 		Registry.register(Registry.ITEM, new Identifier(MODID, "red_phosphorus"), RED_PHOSPHORUS);
 		/*Equipment*/
@@ -110,7 +113,8 @@ public class Main implements ModInitializer {
 		FuelRegistry.INSTANCE.add(WHITE_PHOSPHORUS,200);
 		FuelRegistry.INSTANCE.add(WHITE_PHOSPHORUS_BLOCK,2000);
 		FuelRegistry.INSTANCE.add(RED_PHOSPHORUS, 200);
+		FuelRegistry.INSTANCE.add(RED_PHOSPHORUS_BLOCK,2000);
 	}
 
-	private static final ConfiguredFeature<?, ?> ORE_PHOSPHORUS_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Main.PHOSPHORUS_ORG.getDefaultState(), 9)).range(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(0), YOffset.fixed(64)))).spreadHorizontally().repeat(128);
+	private static final ConfiguredFeature<?, ?> ORE_PHOSPHORUS_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Main.PHOSPHORUS_ORE.getDefaultState(), 9)).range(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(0), YOffset.fixed(64)))).spreadHorizontally().repeat(128);
 }

@@ -94,3 +94,10 @@
 /*27   -*/public class Main implements ModInitializer {/*...*/}
 /*  26 +*/public abstract class Main implements ModInitializer {/*...*/}
 ```
+
+添加材质和翻译
+
+~~修改磷矿的类名和键名~~
+
+~~phosphorus org  磷组织~~
+
