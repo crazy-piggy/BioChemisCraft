@@ -82,3 +82,15 @@
 
 ~~加材质和本地化?不可能的!~~
 
+### 2021.7.24
+
+加入红磷~~不可食用~~
+
+将白磷,白磷块,红磷添加至燃料表
+
+~~新增未知特性(已解决)~~
+
+```java
+/*27   -*/public class Main implements ModInitializer {/*...*/}
+/*  26 +*/public abstract class Main implements ModInitializer {/*...*/}
+```

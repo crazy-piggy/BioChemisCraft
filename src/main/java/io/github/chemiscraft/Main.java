@@ -9,13 +9,12 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.*;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.util.registry.*;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
@@ -30,6 +29,7 @@ public class Main implements ModInitializer {
 	public static final ItemGroup ELEMENT = FabricItemGroupBuilder.build(new Identifier(MODID, "element_group"), () -> new ItemStack(Main.HYDROGEN_1));
 	public static final ItemGroup EQUIPMENT = FabricItemGroupBuilder.build(new Identifier(MODID,"equipment_group"), () -> new ItemStack(Main.IRON_STAND));
 	/*Item*/
+	public static final Item RED_PHOSPHORUS = new Item (new Item.Settings().group(ItemGroup.MISC));
 	/*Equipment*/
 	public static final Item IRON_STAND_RING = new Item (new Item.Settings().group(EQUIPMENT));
 	public static final Item IRON_STAND_BASE = new Item (new Item.Settings().group(EQUIPMENT));
@@ -73,6 +73,8 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MODID, "phosphorus_org"), new BlockItem(PHOSPHORUS_ORG, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 		Registry.register(Registry.BLOCK, new Identifier(MODID, "white_phosphorus_block"), WHITE_PHOSPHORUS_BLOCK);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "white_phosphorus_block"), new BlockItem(WHITE_PHOSPHORUS_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+		/*Item*/
+		Registry.register(Registry.ITEM, new Identifier(MODID, "red_phosphorus"), RED_PHOSPHORUS);
 		/*Equipment*/
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand_ring"), IRON_STAND_RING);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "iron_stand_base"), IRON_STAND_BASE);
@@ -104,6 +106,10 @@ public class Main implements ModInitializer {
 		RegistryKey<ConfiguredFeature<?, ?>> orePhosphorusOverworld = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MODID, "ore_phosphorus_overworld"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, orePhosphorusOverworld.getValue(), ORE_PHOSPHORUS_OVERWORLD);
 		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, orePhosphorusOverworld);
+		/*Fuels*/
+		FuelRegistry.INSTANCE.add(WHITE_PHOSPHORUS,200);
+		FuelRegistry.INSTANCE.add(WHITE_PHOSPHORUS_BLOCK,2000);
+		FuelRegistry.INSTANCE.add(RED_PHOSPHORUS, 200);
 	}
 
 	private static final ConfiguredFeature<?, ?> ORE_PHOSPHORUS_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Main.PHOSPHORUS_ORG.getDefaultState(), 9)).range(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(0), YOffset.fixed(64)))).spreadHorizontally().repeat(128);

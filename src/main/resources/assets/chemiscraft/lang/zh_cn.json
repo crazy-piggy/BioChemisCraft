@@ -26,9 +26,13 @@
   "item.chemiscraft.helium_10": "氦-10",
 
   "item.chemiscraft.white_phosphorus": "白磷",
+  "item.chemiscraft.white_phosphorus_block": "白磷块",
+  "item.chemiscraft.red_phosphorus": "红磷",
 
   "item.chemiscraft.phosphorus.tooltip": "§m§o一 键 回 城",
 
   "itemGroup.chemiscraft.element_group": "化学工艺-元素",
-  "itemGroup.chemiscraft.equipment_group": "化学工艺-设备"
+  "itemGroup.chemiscraft.equipment_group": "化学工艺-设备",
+
+  "effect.chemiscraft.acute_phosphorus_poisoning": "急性磷中毒"
 }

@@ -26,9 +26,13 @@
   "item.chemiscraft.helium_10": "Helium-10",
 
   "item.chemiscraft.white_phosphorus": "White phosphorus",
+  "item.chemiscraft.white_phosphorus_block": "White phosphorus block",
+  "item.chemiscraft.red_phosphorus": "Red phosphorus",
 
   "item.chemiscraft.phosphorus.tooltip": "§m§oBack to spawn point with one click.",
 
   "itemGroup.chemiscraft.element_group": "ChemisCraft-Element",
-  "itemGroup.chemiscraft.equipment_group": "ChemisCraft-Equipment"
+  "itemGroup.chemiscraft.equipment_group": "ChemisCraft-Equipment",
+
+  "effect.chemiscraft.acute_phosphorus_poisoning": "Acute phosphorus poisoning"
 }
