@@ -95,7 +95,7 @@
 /*  26 +*/public abstract class Main implements ModInitializer {/*...*/}
 ```
 
-添加材质和翻译
+添加~~材质~~和~~本地化~~
 
 ~~修改磷矿的类名和键名~~
 
