@@ -61,6 +61,7 @@ public class Main implements ModInitializer {
 	public static final Block PHOSPHORUS_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(2.0f));
 	public static final Block WHITE_PHOSPHORUS_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
 	public static final Block RED_PHOSPHORUS_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
+	public static final Block SOUL_JACK_O_LANTERN = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
 	/*Effects*/
 	public static final StatusEffect ACUTE_PHOSPHORUS_POISONING = new AcutePhosphorusPoisoning();
 	@Override
@@ -105,7 +106,7 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MODID, "white_phosphorus"), WHITE_PHOSPHORUS);
 		/*Effects*/
 		Registry.register(Registry.STATUS_EFFECT, new Identifier(MODID, "acute_phosphorus_poisoning"), ACUTE_PHOSPHORUS_POISONING);
-		/*Orgs*/
+		/*Ores*/
 		RegistryKey<ConfiguredFeature<?, ?>> orePhosphorusOverworld = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MODID, "ore_phosphorus_overworld"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, orePhosphorusOverworld.getValue(), ORE_PHOSPHORUS_OVERWORLD);
 		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, orePhosphorusOverworld);
@@ -114,6 +115,7 @@ public class Main implements ModInitializer {
 		FuelRegistry.INSTANCE.add(WHITE_PHOSPHORUS_BLOCK,2000);
 		FuelRegistry.INSTANCE.add(RED_PHOSPHORUS, 200);
 		FuelRegistry.INSTANCE.add(RED_PHOSPHORUS_BLOCK,2000);
+		FuelRegistry.INSTANCE.add(Items.BLAZE_POWDER, 1200);
 	}
 
 	private static final ConfiguredFeature<?, ?> ORE_PHOSPHORUS_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Main.PHOSPHORUS_ORE.getDefaultState(), 9)).range(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(0), YOffset.fixed(64)))).spreadHorizontally().repeat(128);
