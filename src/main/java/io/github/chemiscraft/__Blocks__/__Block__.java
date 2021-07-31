@@ -1,6 +1,8 @@
 package io.github.chemiscraft.__Blocks__;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
@@ -14,13 +16,13 @@ import net.minecraft.world.BlockView;
 import static net.minecraft.block.FacingBlock.FACING;
 
 public class __Block__ {
-    public static class IronStand extends net.minecraft.block.Block {
+    public static class IronStand extends Block {
         public IronStand(Settings settings){
-            super(settings.nonOpaque());
+            super(settings.nonOpaque().mapColor(MapColor.IRON_GRAY).noCollision());
         }
 
         @Override
-        protected void appendProperties(StateManager.Builder<net.minecraft.block.Block, BlockState> stateManager) {
+        protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
             stateManager.add(Properties.FACING);
         }
 
@@ -38,13 +40,13 @@ public class __Block__ {
         }
     }
 
-    public static class IronTrivet extends net.minecraft.block.Block {
+    public static class IronTrivet extends Block {
         public IronTrivet(Settings settings){
-            super(settings.nonOpaque());
+            super(settings.nonOpaque().mapColor(MapColor.IRON_GRAY).noCollision());
         }
 
         @Override
-        protected void appendProperties(StateManager.Builder<net.minecraft.block.Block, BlockState> stateManager) {
+        protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
             stateManager.add(Properties.FACING);
         }
 
@@ -62,9 +64,15 @@ public class __Block__ {
         }
     }
 
-    public static class PhosphorusBlock extends net.minecraft.block.Block {
+    public static class PhosphorusBlock extends Block {
         public PhosphorusBlock(Settings settings){
-            super(settings);
+            super(settings.nonOpaque());
+        }
+    }
+
+    public static class SJOL extends Block {
+        public SJOL(Settings settings){
+            super(settings.luminance((state) -> 11).nonOpaque().mapColor(MapColor.ORANGE));
         }
     }
 }

@@ -59,9 +59,9 @@ public class Main implements ModInitializer {
 	public static final __Block__.IronTrivet IRON_TRIVET = new __Block__.IronTrivet(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
 	public static final __Block__.IronStand IRON_STAND = new __Block__.IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
 	public static final Block PHOSPHORUS_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(2.0f));
-	public static final Block WHITE_PHOSPHORUS_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
-	public static final Block RED_PHOSPHORUS_BLOCK = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
-	public static final Block SOUL_JACK_O_LANTERN = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
+	public static final __Block__.PhosphorusBlock WHITE_PHOSPHORUS_BLOCK = new __Block__.PhosphorusBlock(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
+	public static final __Block__.PhosphorusBlock RED_PHOSPHORUS_BLOCK = new __Block__.PhosphorusBlock(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
+	public static final __Block__.SJOL SOUL_JACK_O_LANTERN = new __Block__.SJOL(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
 	/*Effects*/
 	public static final StatusEffect ACUTE_PHOSPHORUS_POISONING = new AcutePhosphorusPoisoning();
 	@Override
@@ -77,6 +77,8 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MODID, "white_phosphorus_block"), new BlockItem(WHITE_PHOSPHORUS_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 		Registry.register(Registry.BLOCK,new Identifier(MODID, "red_phosphorus_block"),RED_PHOSPHORUS_BLOCK);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "red_phosphorus_block"), new BlockItem(RED_PHOSPHORUS_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
+		Registry.register(Registry.BLOCK,new Identifier(MODID, "soul_jack_o_lantern"),SOUL_JACK_O_LANTERN);
+		Registry.register(Registry.ITEM, new Identifier(MODID, "soul_jack_o_lantern"), new BlockItem(SOUL_JACK_O_LANTERN, new Item.Settings().group(ItemGroup.DECORATIONS)));
 		/*Item*/
 		Registry.register(Registry.ITEM, new Identifier(MODID, "red_phosphorus"), RED_PHOSPHORUS);
 		/*Equipment*/
