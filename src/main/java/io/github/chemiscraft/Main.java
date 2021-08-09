@@ -58,7 +58,7 @@ public class Main implements ModInitializer {
 	/*Block*/
 	public static final __Block__.IronTrivet IRON_TRIVET = new __Block__.IronTrivet(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
 	public static final __Block__.IronStand IRON_STAND = new __Block__.IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
-	public static final Block PHOSPHORUS_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(2.0f));
+	public static final Block PHOSPHORUS_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
 	public static final __Block__.PhosphorusBlock WHITE_PHOSPHORUS_BLOCK = new __Block__.PhosphorusBlock(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
 	public static final __Block__.PhosphorusBlock RED_PHOSPHORUS_BLOCK = new __Block__.PhosphorusBlock(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
 	public static final __Block__.SJOL SOUL_JACK_O_LANTERN = new __Block__.SJOL(FabricBlockSettings.of(Material.METAL).hardness(1.5f));

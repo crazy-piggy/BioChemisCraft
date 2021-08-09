@@ -2,21 +2,12 @@
   "type": "minecraft:block",
   "pools":[
     {
-      "rolls": 3,
+      "rolls": 5,
       "entries":[
         {
           "type": "minecraft:item",
           "name": "chemiscraft:white_phosphorus"
-        }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ]
-    },{
-      "rolls": 1,
-      "entries":[
+        },
         {
           "type": "minecraft:item",
           "name": "chemiscraft:red_phosphorus"

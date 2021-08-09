@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "chemiscraft:block/phosphorus_org" }
+    "": { "model": "chemiscraft:block/phosphorus_ore" }
   }
 }
