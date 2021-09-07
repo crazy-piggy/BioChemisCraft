@@ -1,25 +1,24 @@
 package io.github.chemiscraft;
 
-import io.github.chemiscraft.__Blocks__.__Block__;
-import io.github.chemiscraft.__Items__.Phosphorus;
 import io.github.chemiscraft.Materials.RodSword;
+import io.github.chemiscraft.__Blocks__.__Block__;
 import io.github.chemiscraft.__Effects__.AcutePhosphorusPoisoning;
+import io.github.chemiscraft.__Items__.Phosphorus;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.*;
-import net.minecraft.entity.EntityDimensions;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.effect.*;
-import net.minecraft.entity.mob.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.*;
+import net.minecraft.util.registry.BuiltinRegistries;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
@@ -69,7 +68,6 @@ public class Main implements ModInitializer {
 	public static final __Block__.SJOL SOUL_JACK_O_LANTERN = new __Block__.SJOL(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
 	/*Effects*/
 	public static final StatusEffect ACUTE_PHOSPHORUS_POISONING = new AcutePhosphorusPoisoning();
-	/*Entities*/
 	@Override
 	public void onInitialize() {
 		/*Block*/
@@ -124,13 +122,6 @@ public class Main implements ModInitializer {
 		FuelRegistry.INSTANCE.add(RED_PHOSPHORUS, 200);
 		FuelRegistry.INSTANCE.add(RED_PHOSPHORUS_BLOCK,2000);
 		FuelRegistry.INSTANCE.add(Items.BLAZE_POWDER, 1200);
-		/*Entities*/
-		Registry.register(Registry.ENTITY_TYPE, new Identifier(MODID, "soul_ghast"), SoulGhastEntity.SOUL_GHAST);
 	}
-
 	private static final ConfiguredFeature<?, ?> ORE_PHOSPHORUS_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, Main.PHOSPHORUS_ORE.getDefaultState(), 9)).range(new RangeDecoratorConfig(UniformHeightProvider.create(YOffset.aboveBottom(0), YOffset.fixed(64)))).spreadHorizontally().repeat(128);
-
-	public class SoulGhastEntity extends GhastEntity {
-		public static final EntityType<GhastEntity> SOUL_GHAST = Registry.register(Registry.ENTITY_TYPE, new Identifier(MODID, "soul_ghast"), FabricEntityTypeBuilder.create(SpawnGroup.AMBIENT, SoulGhastEntity::new).size(EntityDimensions.fixed(4, 4)).build());
-	}
 }
