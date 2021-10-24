@@ -74,5 +74,23 @@ public class __Block__ {
         public SJOL(Settings settings){
             super(settings.luminance((state) -> 11).nonOpaque().mapColor(MapColor.ORANGE));
         }
+
+        @Override
+        protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
+            stateManager.add(Properties.FACING);
+        }
+
+        @Override
+        public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext ctx) {
+            Direction dir = state.get(FACING);
+            return switch (dir) {
+                case NORTH, SOUTH, EAST, WEST -> VoxelShapes.cuboid(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
+                default -> VoxelShapes.fullCube();
+            };
+        }
+
+        public BlockState getPlacementState(ItemPlacementContext ctx) {
+            return this.getDefaultState().with(FACING, ctx.getPlayerFacing());
+        }
     }
 }
