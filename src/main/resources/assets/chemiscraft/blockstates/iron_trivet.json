@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north": { "model": "chemiscraft:block/iron_trivet" },
+    "facing=east":  { "model": "chemiscraft:block/iron_trivet", "y": 90},
+    "facing=south": { "model": "chemiscraft:block/iron_trivet", "y": 180 },
+    "facing=west":  { "model": "chemiscraft:block/iron_trivet", "y": 270 },
+    "facing=up": {"model":"chemiscraft:block/iron_trivet"},
+    "facing=down": {"model": "chemiscraft:block/iron_trivet","x": 180}
+  }
+}

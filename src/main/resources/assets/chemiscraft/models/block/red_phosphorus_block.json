@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "chemiscraft:block/red_phosphorus_block"
+  }
+}
