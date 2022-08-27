@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/orientable",
-  "textures": {
-    "front": "chemiscraft:block/soul_jack_o_lantern",
-    "side": "chemiscraft:block/soul_jack_o_lantern_side",
-    "top": "chemiscraft:block/soul_jack_o_lantern_top"
-  }
-}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:block",
+  "pools":[
+    {
+      "rolls": 5,
+      "entries":[
+        {
+          "type": "minecraft:item",
+          "name": "biochemiscraft:white_phosphorus"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "biochemiscraft:red_phosphorus"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    }
+  ]
+}

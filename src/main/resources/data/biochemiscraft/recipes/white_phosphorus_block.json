@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "biochemiscraft:white_phosphorus"
+    }
+  },
+  "result": {
+    "item": "biochemiscraft:white_phosphorus_block",
+    "count": 1
+  }
+}

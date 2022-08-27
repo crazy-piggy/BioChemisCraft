@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "biochemiscraft:white_phosphorus_block"
+    }
+  ],
+  "result": {
+    "item": "biochemiscraft:white_phosphorus",
+    "count": 9
+  }
+}

@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "chemiscraft",
+  "id": "biochemiscraft",
   "version": "1.1",
 
-  "name": "ChemisCraft",
+  "name": "BioChemisCraft",
   "description": "Make Minecraft scientific again!",
   "authors": [
     "crazy_piggy_"
   ],
   "contact": {
     "homepage": "https://github.com/crazy-piggy",
-    "sources": "https://github.com/crazy-piggy/chemiscraft"
+    "sources": "https://github.com/crazy-piggy/biochemiscraft"
   },
 
   "license": "MIT",
-  "icon": "assets/chemiscraft/icon.png",
+  "icon": "assets/biochemiscraft/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.chemiscraft.Main"
+      "io.github.biochemiscraft.Main"
     ]
   },
   "mixins": [
-    "chemiscraft.mixins.json"
+    "biochemiscraft.mixins.json"
   ],
 
   "depends": {

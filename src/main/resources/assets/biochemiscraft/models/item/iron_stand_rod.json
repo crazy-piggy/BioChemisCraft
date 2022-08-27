@@ -1,0 +1,49 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "biochemiscraft:item/iron_stand_rod",
+		"particle": "biochemiscraft:item/iron_stand_rod"
+	},
+	"elements": [
+		{
+			"from": [7, 0, 8],
+			"to": [8, 15, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"east": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"west": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0.5, 6.75, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0.5, 6.75, 0.5]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 6.75, 0]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 6.75, 0]
+		},
+		"ground": {
+			"rotation": [90, 0, 0]
+		},
+		"gui": {
+			"rotation": [0, 0, -45],
+			"translation": [0.5, -0.5, 0]
+		},
+		"head": {
+			"rotation": [-45, 0, 0],
+			"translation": [0.5, 11.25, -12]
+		},
+		"fixed": {
+			"translation": [0, 0, -0.75]
+		}
+	}
+}

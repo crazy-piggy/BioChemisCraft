@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north": { "model": "biochemiscraft:block/iron_stand" },
+    "facing=east":  { "model": "biochemiscraft:block/iron_stand", "y": 90},
+    "facing=south": { "model": "biochemiscraft:block/iron_stand", "y": 180 },
+    "facing=west":  { "model": "biochemiscraft:block/iron_stand", "y": 270 },
+    "facing=up": {"model":"biochemiscraft:block/iron_stand"},
+    "facing=down": {"model": "biochemiscraft:block/iron_stand","x": 180}
+  }
+}

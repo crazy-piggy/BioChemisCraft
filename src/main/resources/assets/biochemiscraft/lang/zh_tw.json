@@ -1,0 +1,41 @@
+{
+  "block.chemiscraft.iron_stand": "鉄架台",
+  "block.chemiscraft.iron_trivet": "鉄三角架",
+
+  "item.biochemiscraft.iron_stand_ring": "鉄架台-鐵圈",
+  "item.biochemiscraft.iron_stand_base": "鉄架台-底座",
+  "item.biochemiscraft.iron_stand_clip": "鉄架台-鉄夾",
+  "item.biochemiscraft.iron_stand_rod": "鉄架台-鉄桿",
+  "item.biochemiscraft.iron_ring": "鉄圈",
+
+  "item.biochemiscraft.hydrogen_1": "氫-1",
+  "item.biochemiscraft.hydrogen_2": "氫-2",
+  "item.biochemiscraft.hydrogen_3": "氫-3",
+  "item.biochemiscraft.hydrogen_4": "氫-4",
+  "item.biochemiscraft.hydrogen_5": "氫-5",
+  "item.biochemiscraft.hydrogen_6": "氫-6",
+  "item.biochemiscraft.hydrogen_7": "氫-7",
+
+  "item.biochemiscraft.helium_3": "氦-3",
+  "item.biochemiscraft.helium_4": "氦-4",
+  "item.biochemiscraft.helium_5": "氦-5",
+  "item.biochemiscraft.helium_6": "氦-6",
+  "item.biochemiscraft.helium_7": "氦-7",
+  "item.biochemiscraft.helium_8": "氦-8",
+  "item.biochemiscraft.helium_9": "氦-9",
+  "item.biochemiscraft.helium_10": "氦-10",
+
+  "item.biochemiscraft.white_phosphorus": "白磷",
+  "item.biochemiscraft.red_phosphorus": "紅磷",
+  "block.biochemiscraft.white_phosphorus_block": "白磷塊",
+  "block.biochemiscraft.red_phosphorus_block": "红磷塊",
+  "block.biochemiscraft.phosphorus_ore": "磷礦",
+  "block.biochemiscraft.soul_jack_o_lantern": "靈魂南瓜燈",
+
+  "item.biochemiscraft.phosphorus.tooltip": "§m§o一 鍵 回 城",
+
+  "itemGroup.biochemiscraft.element_group": "化學工藝-元素",
+  "itemGroup.biochemiscraft.equipment_group": "化學工藝-設備",
+
+  "effect.biochemiscraft.acute_phosphorus_poisoning": "急性磷中毒"
+}

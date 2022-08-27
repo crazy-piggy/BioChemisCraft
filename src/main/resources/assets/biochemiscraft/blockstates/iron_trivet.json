@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north": { "model": "biochemiscraft:block/iron_trivet" },
+    "facing=east":  { "model": "biochemiscraft:block/iron_trivet", "y": 90},
+    "facing=south": { "model": "biochemiscraft:block/iron_trivet", "y": 180 },
+    "facing=west":  { "model": "biochemiscraft:block/iron_trivet", "y": 270 },
+    "facing=up": {"model":"biochemiscraft:block/iron_trivet"},
+    "facing=down": {"model": "biochemiscraft:block/iron_trivet","x": 180}
+  }
+}

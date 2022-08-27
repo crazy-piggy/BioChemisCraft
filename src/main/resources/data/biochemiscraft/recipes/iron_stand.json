@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AB ",
+    "AC ",
+    "ADD"
+  ],
+  "key": {
+    "A": {
+      "item": "biochemiscraft:iron_stand_rod"
+    },
+    "B": {
+      "item": "biochemiscraft:iron_stand_clip"
+    },
+    "C": {
+      "item": "biochemiscraft:iron_stand_ring"
+    },
+    "D": {
+      "item": "biochemiscraft:iron_stand_base"
+    }
+  },
+  "result": {
+    "item": "biochemiscraft:iron_stand",
+    "count": 1
+  }
+}

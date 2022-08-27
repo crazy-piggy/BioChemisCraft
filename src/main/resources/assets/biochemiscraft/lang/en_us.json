@@ -1,0 +1,41 @@
+{
+  "block.biochemiscraft.iron_stand": "Iron stand",
+  "block.biochemiscraft.iron_trivet": "Iron trivet",
+
+  "item.biochemiscraft.iron_stand_ring": "Iron stand-iron ring",
+  "item.biochemiscraft.iron_stand_base": "Iron stand-base",
+  "item.biochemiscraft.iron_stand_clip": "Iron stand-iron clip",
+  "item.biochemiscraft.iron_stand_rod": "Iron stand-rod",
+  "item.biochemiscraft.iron_ring": "Iron ring",
+
+  "item.biochemiscraft.hydrogen_1": "Hydrogen-1",
+  "item.biochemiscraft.hydrogen_2": "Hydrogen-2",
+  "item.biochemiscraft.hydrogen_3": "Hydrogen-3",
+  "item.biochemiscraft.hydrogen_4": "Hydrogen-4",
+  "item.biochemiscraft.hydrogen_5": "Hydrogen-5",
+  "item.biochemiscraft.hydrogen_6": "Hydrogen-6",
+  "item.biochemiscraft.hydrogen_7": "Hydrogen-7",
+
+  "item.biochemiscraft.helium_3": "Helium-3",
+  "item.biochemiscraft.helium_4": "Helium-4",
+  "item.biochemiscraft.helium_5": "Helium-5",
+  "item.biochemiscraft.helium_6": "Helium-6",
+  "item.biochemiscraft.helium_7": "Helium-7",
+  "item.biochemiscraft.helium_8": "Helium-8",
+  "item.biochemiscraft.helium_9": "Helium-9",
+  "item.biochemiscraft.helium_10": "Helium-10",
+
+  "item.biochemiscraft.white_phosphorus": "White phosphorus",
+  "item.biochemiscraft.red_phosphorus": "Red phosphorus",
+  "block.biochemiscraft.white_phosphorus_block": "White phosphorus block",
+  "block.biochemiscraft.red_phosphorus_block": "Red phosphorus block",
+  "block.biochemiscraft.phosphorus_ore": "Phosphorus ore",
+  "block.biochemiscraft.soul_jack_o_lantern": "Soul Jack 'o lantern",
+
+  "item.biochemiscraft.phosphorus.tooltip": "§m§oBack to spawn point with one click.",
+
+  "itemGroup.biochemiscraft.element_group": "ChemisCraft-Element",
+  "itemGroup.biochemiscraft.equipment_group": "ChemisCraft-Equipment",
+
+  "effect.biochemiscraft.acute_phosphorus_poisoning": "Acute phosphorus poisoning"
+}
