@@ -1,9 +1,13 @@
 package io.github.biochemiscraft;
 
 import io.github.biochemiscraft.Materials.RodSword;
-import io.github.biochemiscraft.__Blocks__.__Block__;
+import io.github.biochemiscraft.__Blocks__.IronStand;
+import io.github.biochemiscraft.__Blocks__.IronTrivet;
+import io.github.biochemiscraft.__Blocks__.PhosphorusBlock;
+import io.github.biochemiscraft.__Blocks__.SJOL;
 import io.github.biochemiscraft.__Effects__.AcutePhosphorusPoisoning;
 import io.github.biochemiscraft.__Items__.Phosphorus;
+
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -62,12 +66,12 @@ public class Main implements ModInitializer {
 	public static final Item HELIUM_9 = new Item(new Item.Settings().fireproof().group(ELEMENT));
 	public static final Item HELIUM_10 = new Item(new Item.Settings().fireproof().group(ELEMENT));
 	/*Block*/
-	public static final __Block__.IronTrivet IRON_TRIVET = new __Block__.IronTrivet(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
-	public static final __Block__.IronStand IRON_STAND = new __Block__.IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
+	public static final IronTrivet IRON_TRIVET = new IronTrivet(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
+	public static final IronStand IRON_STAND = new IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
 	public static final Block PHOSPHORUS_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
-	public static final __Block__.PhosphorusBlock WHITE_PHOSPHORUS_BLOCK = new __Block__.PhosphorusBlock(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
-	public static final __Block__.PhosphorusBlock RED_PHOSPHORUS_BLOCK = new __Block__.PhosphorusBlock(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
-	public static final __Block__.SJOL SOUL_JACK_O_LANTERN = new __Block__.SJOL(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
+	public static final PhosphorusBlock WHITE_PHOSPHORUS_BLOCK = new PhosphorusBlock(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
+	public static final PhosphorusBlock RED_PHOSPHORUS_BLOCK = new PhosphorusBlock(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
+	public static final SJOL SOUL_JACK_O_LANTERN = new SJOL(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
 	/*Effects*/
 	public static final StatusEffect ACUTE_PHOSPHORUS_POISONING = new AcutePhosphorusPoisoning();
 
