@@ -1,23 +1,14 @@
 package io.github.biochemiscraft;
 
-import io.github.biochemiscraft.Materials.RodSword;
-import io.github.biochemiscraft.__Blocks__.IronStand;
-import io.github.biochemiscraft.__Blocks__.IronTrivet;
-import io.github.biochemiscraft.__Blocks__.PhosphorusBlock;
-import io.github.biochemiscraft.__Blocks__.SJOL;
-import io.github.biochemiscraft.__Effects__.AcutePhosphorusPoisoning;
-import io.github.biochemiscraft.__Items__.Phosphorus;
-
+import io.github.biochemiscraft.fluid.PhosphoricAcid;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.Material;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.FluidBlock;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -33,47 +24,14 @@ import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 
 import java.util.Arrays;
 
+import static io.github.biochemiscraft.block.Blocks.*;
+import static io.github.biochemiscraft.effect.Effects.*;
+import static io.github.biochemiscraft.fluid.Fluids.*;
+import static io.github.biochemiscraft.item.ItemGroups.*;
+import static io.github.biochemiscraft.item.Items.*;
+
 public class Main implements ModInitializer {
 	public static final String MODID = "biochemiscraft";
-	/*Item Group*/
-	public static final ItemGroup ELEMENT = FabricItemGroupBuilder.build(new Identifier(MODID, "element_group"), () -> new ItemStack(Main.HYDROGEN_1));
-	public static final ItemGroup EQUIPMENT = FabricItemGroupBuilder.build(new Identifier(MODID, "equipment_group"), () -> new ItemStack(Main.IRON_STAND));
-	/*Item*/
-	public static final Item RED_PHOSPHORUS = new Item(new Item.Settings().group(ItemGroup.MISC));
-	/*Equipment*/
-	public static final Item IRON_STAND_RING = new Item(new Item.Settings().group(EQUIPMENT));
-	public static final Item IRON_STAND_BASE = new Item(new Item.Settings().group(EQUIPMENT));
-	public static final Item IRON_STAND_CLIP = new Item(new Item.Settings().group(EQUIPMENT));
-	public static final Item IRON_STAND_ROD = new SwordItem(RodSword.INSTANCE, 5, 1, new Item.Settings().group(EQUIPMENT));
-	public static final Item IRON_RING = new Item(new Item.Settings().group(EQUIPMENT));
-	/*Food*/
-	public static final Phosphorus WHITE_PHOSPHORUS = new Phosphorus(new Item.Settings().group(ItemGroup.MISC).food(new FoodComponent.Builder().hunger(1).saturationModifier(1).alwaysEdible().snack().statusEffect(new StatusEffectInstance(new AcutePhosphorusPoisoning(), 50, 1/*175伤害!*/), 100.0f).build()));
-	/*Hydrogen*/
-	public static final Item HYDROGEN_1 = new Item(new Item.Settings().group(ELEMENT));
-	public static final Item HYDROGEN_2 = new Item(new Item.Settings().group(ELEMENT));
-	public static final Item HYDROGEN_3 = new Item(new Item.Settings().group(ELEMENT));
-	public static final Item HYDROGEN_4 = new Item(new Item.Settings().group(ELEMENT));
-	public static final Item HYDROGEN_5 = new Item(new Item.Settings().group(ELEMENT));
-	public static final Item HYDROGEN_6 = new Item(new Item.Settings().group(ELEMENT));
-	public static final Item HYDROGEN_7 = new Item(new Item.Settings().group(ELEMENT));
-	/*Helium*/
-	public static final Item HELIUM_3 = new Item(new Item.Settings().fireproof().group(ELEMENT));
-	public static final Item HELIUM_4 = new Item(new Item.Settings().fireproof().group(ELEMENT));
-	public static final Item HELIUM_5 = new Item(new Item.Settings().fireproof().group(ELEMENT));
-	public static final Item HELIUM_6 = new Item(new Item.Settings().fireproof().group(ELEMENT));
-	public static final Item HELIUM_7 = new Item(new Item.Settings().fireproof().group(ELEMENT));
-	public static final Item HELIUM_8 = new Item(new Item.Settings().fireproof().group(ELEMENT));
-	public static final Item HELIUM_9 = new Item(new Item.Settings().fireproof().group(ELEMENT));
-	public static final Item HELIUM_10 = new Item(new Item.Settings().fireproof().group(ELEMENT));
-	/*Block*/
-	public static final IronTrivet IRON_TRIVET = new IronTrivet(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
-	public static final IronStand IRON_STAND = new IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
-	public static final Block PHOSPHORUS_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
-	public static final PhosphorusBlock WHITE_PHOSPHORUS_BLOCK = new PhosphorusBlock(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
-	public static final PhosphorusBlock RED_PHOSPHORUS_BLOCK = new PhosphorusBlock(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
-	public static final SJOL SOUL_JACK_O_LANTERN = new SJOL(FabricBlockSettings.of(Material.METAL).hardness(1.5f));
-	/*Effects*/
-	public static final StatusEffect ACUTE_PHOSPHORUS_POISONING = new AcutePhosphorusPoisoning();
 
 	@Override
 	public void onInitialize() {
@@ -90,6 +48,13 @@ public class Main implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier(MODID, "red_phosphorus_block"), new BlockItem(RED_PHOSPHORUS_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
 		Registry.register(Registry.BLOCK, new Identifier(MODID, "soul_jack_o_lantern"), SOUL_JACK_O_LANTERN);
 		Registry.register(Registry.ITEM, new Identifier(MODID, "soul_jack_o_lantern"), new BlockItem(SOUL_JACK_O_LANTERN, new Item.Settings().group(ItemGroup.DECORATIONS)));
+		Registry.register(Registry.BLOCK, new Identifier(MODID, "text_block"), TEST);
+		Registry.register(Registry.ITEM, new Identifier(MODID, "text_block"), new BlockItem(TEST, new Item.Settings()));
+		/*Fluid*/
+		Registry.register(Registry.FLUID, new Identifier(MODID, "phosphorus_acid"), new PhosphoricAcid.Still());
+		Registry.register(Registry.FLUID, new Identifier(MODID, "flowing_phosphorus_acid"), new PhosphoricAcid.Flowing());
+		Registry.register(Registry.ITEM, new Identifier(MODID, "phosphorus_acid_bucket"), new BucketItem(PHOSPHORICACID_STILL, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1)));
+		Registry.register(Registry.BLOCK, new Identifier(MODID, "phosphorus_acid"), new FluidBlock(PHOSPHORICACID_STILL, FabricBlockSettings.copy(Blocks.WATER)));
 		/*Item*/
 		Registry.register(Registry.ITEM, new Identifier(MODID, "red_phosphorus"), RED_PHOSPHORUS);
 		/*Equipment*/
@@ -126,7 +91,8 @@ public class Main implements ModInitializer {
 				OVERWORLD_PHOSPHORUS_ORE_PLACED_FEATURE);
 		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES,
 				RegistryKey.of(Registry.PLACED_FEATURE_KEY,
-						new Identifier(MODID, "overworld_phosphorus_ore")));		/*Fuels*/
+						new Identifier(MODID, "overworld_phosphorus_ore")));
+		/*Fuels*/
 		FuelRegistry.INSTANCE.add(WHITE_PHOSPHORUS, 200);
 		FuelRegistry.INSTANCE.add(WHITE_PHOSPHORUS_BLOCK, 2000);
 		FuelRegistry.INSTANCE.add(RED_PHOSPHORUS, 200);
@@ -137,7 +103,7 @@ public class Main implements ModInitializer {
 	private static ConfiguredFeature<?, ?> OVERWORLD_PHOSPHORUS_ORE_CONFIGURED_FEATURE = new ConfiguredFeature
 			(Feature.ORE, new OreFeatureConfig(
 					OreConfiguredFeatures.STONE_ORE_REPLACEABLES,
-					Main.PHOSPHORUS_ORE.getDefaultState(),
+					PHOSPHORUS_ORE.getDefaultState(),
 					9));
 
 	public static PlacedFeature OVERWORLD_PHOSPHORUS_ORE_PLACED_FEATURE = new PlacedFeature(

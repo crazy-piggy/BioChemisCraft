@@ -1,4 +1,4 @@
-package io.github.biochemiscraft.Materials;
+package io.github.biochemiscraft.material;
 
 
 import net.minecraft.item.Items;

@@ -1,4 +1,4 @@
-package io.github.biochemiscraft.__Items__;
+package io.github.biochemiscraft.item;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
@@ -15,6 +15,6 @@ public class Phosphorus extends Item {
 
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-        tooltip.add(Text.translatable("item.chemiscraft.phosphorus.tooltip"));
+        tooltip.add(Text.translatable("item.biochemiscraft.phosphorus.tooltip"));
     }
 }

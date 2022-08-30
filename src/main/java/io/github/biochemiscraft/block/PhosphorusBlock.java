@@ -1,4 +1,4 @@
-package io.github.biochemiscraft.__Blocks__;
+package io.github.biochemiscraft.block;
 
 import net.minecraft.block.Block;
 

@@ -1,4 +1,4 @@
-package io.github.biochemiscraft.__Blocks__;
+package io.github.biochemiscraft.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -15,9 +15,9 @@ import net.minecraft.world.BlockView;
 
 import static net.minecraft.block.FacingBlock.FACING;
 
-public class IronTrivet extends Block {
-    public IronTrivet(Settings settings){
-        super(settings.nonOpaque().mapColor(MapColor.IRON_GRAY).noCollision());
+public class SJOL extends Block {
+    public SJOL(Settings settings){
+        super(settings.luminance((state) -> 11).nonOpaque().mapColor(MapColor.ORANGE));
     }
 
     @Override
@@ -35,6 +35,7 @@ public class IronTrivet extends Block {
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getPlayerFacing());
+        return this.getDefaultState().with(FACING, ctx.getPlayerFacing().getOpposite());
     }
 }
+
