@@ -22,15 +22,12 @@
       "io.github.biochemiscraft.Main"
     ]
   },
-  "mixins": [
-    "biochemiscraft.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.13.3",
     "fabric": "*",
     "minecraft": "~1.19.2",
-    "java": ">=17"
+    "java": "17"
   },
   "suggests": {
     "another-mod": "*"

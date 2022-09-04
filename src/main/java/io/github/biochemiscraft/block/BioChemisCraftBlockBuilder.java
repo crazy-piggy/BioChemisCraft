@@ -5,8 +5,6 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -14,14 +12,16 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 
+import static net.minecraft.state.property.Properties.HORIZONTAL_FACING;
+import static net.minecraft.state.property.Properties.WATERLOGGED;
+
 public class BioChemisCraftBlockBuilder {
-    private static BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-    private static double minX = 0.0;
-    private static double minY = 0.0;
-    private static double minZ = 0.0;
-    private static double maxX = 1.0;
-    private static double maxY = 1.0;
-    private static double maxZ = 1.0;
+    private double minX = 0.0;
+    private double minY = 0.0;
+    private double minZ = 0.0;
+    private double maxX = 1.0;
+    private double maxY = 1.0;
+    private double maxZ = 1.0;
 
     public BioChemisCraftBlockBuilder minX(double minX) {
         this.minX = minX;
@@ -54,20 +54,31 @@ public class BioChemisCraftBlockBuilder {
     }
 
     public Builder build(Builder.Settings settings) {
-        return new Builder(settings);
+        return new Builder(settings, minX, minY, minZ, maxX, maxY, maxZ);
     }
 
     public static class Builder extends HorizontalFacingBlock implements Waterloggable {
-        public Builder(Settings settings) {
+        private final double minX, minY, minZ;
+        private final double maxX, maxY, maxZ;
+
+        private Builder(Settings settings,
+                        double minX, double minY, double minZ,
+                        double maxX, double maxY, double maxZ) {
             super(settings.nonOpaque().noCollision());
-            setDefaultState(this.stateManager.getDefaultState()
-                    .with(Properties.HORIZONTAL_FACING, Direction.NORTH)
+            this.minX = minX;
+            this.minY = minY;
+            this.minZ = minZ;
+            this.maxX = maxX;
+            this.maxY = maxY;
+            this.maxZ = maxZ;
+            setDefaultState(stateManager.getDefaultState()
+                    .with(HORIZONTAL_FACING, Direction.NORTH)
                     .with(WATERLOGGED, false));
         }
 
         @Override
         protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
-            stateManager.add(Properties.HORIZONTAL_FACING, WATERLOGGED);
+            stateManager.add(HORIZONTAL_FACING, WATERLOGGED);
         }
 
         @Override
@@ -82,7 +93,7 @@ public class BioChemisCraftBlockBuilder {
         @Override
         public BlockState getPlacementState(ItemPlacementContext ctx) {
             return this.getDefaultState()
-                    .with(Properties.HORIZONTAL_FACING, ctx.getPlayerFacing().getOpposite())
+                    .with(HORIZONTAL_FACING, ctx.getPlayerFacing().getOpposite())
                     .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER)
                     .with(FACING, ctx.getPlayerFacing().getOpposite());
         }

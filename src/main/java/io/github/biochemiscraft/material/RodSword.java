@@ -1,13 +1,11 @@
 package io.github.biochemiscraft.material;
 
-
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
-public class RodSword implements ToolMaterial {
-
-    public static final RodSword INSTANCE = new RodSword();
+public enum RodSword implements ToolMaterial {
+    INSTANCE;
 
     @Override
     public int getDurability() {
@@ -38,5 +36,4 @@ public class RodSword implements ToolMaterial {
     public int getEnchantability() {
         return 127;
     }
-
 }

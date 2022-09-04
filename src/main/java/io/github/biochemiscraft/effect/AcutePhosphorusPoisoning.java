@@ -18,6 +18,6 @@ public class AcutePhosphorusPoisoning extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        if (entity instanceof PlayerEntity) entity.damage(DamageSource.MAGIC,15.0f + amplifier);
+        if (entity instanceof PlayerEntity) entity.damage(DamageSource.MAGIC, 15.0f + amplifier);
     }
 }
