@@ -3,29 +3,28 @@ package io.github.biochemiscraft.item;
 import io.github.biochemiscraft.material.RodSword;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.*;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 
 import static io.github.biochemiscraft.Main.ofModIdentifier;
 import static io.github.biochemiscraft.block.Blocks.*;
 import static io.github.biochemiscraft.effect.Effects.ACUTE_PHOSPHORUS_POISONING;
 import static io.github.biochemiscraft.fluid.Fluids.PHOSPHORICACID_STILL;
-import static io.github.biochemiscraft.item.ItemGroups.ELEMENT;
-import static io.github.biochemiscraft.item.ItemGroups.EQUIPMENT;
 import static net.minecraft.item.Items.BUCKET;
 
 public class Items {
-    public static final Item RED_PHOSPHORUS = new Item(new Item.Settings().group(ItemGroup.MISC));
+    public static final Item RED_PHOSPHORUS = new Item(new Item.Settings());
     public static final Item PHOSPHORICACID_BUCKET = new BucketItem(PHOSPHORICACID_STILL, new Item.Settings().recipeRemainder(BUCKET).maxCount(1));
 
     ///////////////////////////////////////////////////////////////////////////
     // Equipment
     ///////////////////////////////////////////////////////////////////////////
 
-    public static final Item IRON_STAND_RING = new Item(new Item.Settings().group(EQUIPMENT));
-    public static final Item IRON_STAND_BASE = new Item(new Item.Settings().group(EQUIPMENT));
-    public static final Item IRON_STAND_CLIP = new Item(new Item.Settings().group(EQUIPMENT));
-    public static final Item IRON_STAND_ROD = new SwordItem(RodSword.INSTANCE, 5, 1, new Item.Settings().group(EQUIPMENT));
-    public static final Item IRON_RING = new Item(new Item.Settings().group(EQUIPMENT));
+    public static final Item IRON_STAND_RING = new Item(new Item.Settings());
+    public static final Item IRON_STAND_BASE = new Item(new Item.Settings());
+    public static final Item IRON_STAND_CLIP = new Item(new Item.Settings());
+    public static final Item IRON_STAND_ROD = new SwordItem(RodSword.INSTANCE, 5, 1, new Item.Settings());
+    public static final Item IRON_RING = new Item(new Item.Settings());
 
     ///////////////////////////////////////////////////////////////////////////
     // "Food"
@@ -33,7 +32,6 @@ public class Items {
 
     public static final Phosphorus WHITE_PHOSPHORUS = new Phosphorus(new Item
             .Settings()
-            .group(ItemGroup.MISC)
             .food(new FoodComponent.Builder()
                     .hunger(1)
                     .saturationModifier(1)
@@ -68,16 +66,16 @@ public class Items {
     public static final Item HELIUM_10 = new Item(elementSettings().fireproof());
 
     private static Item.Settings elementSettings() {
-        return new Item.Settings().group(ELEMENT);
+        return new Item.Settings();
     }
 
     public static void register() {
-        register("iron_stand", new BlockItem(IRON_STAND, new Item.Settings().group(EQUIPMENT)));
-        register("iron_trivet", new BlockItem(IRON_TRIVET, new Item.Settings().group(EQUIPMENT)));
-        register("phosphorus_ore", new BlockItem(PHOSPHORUS_ORE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        register("white_phosphorus_block", new BlockItem(WHITE_PHOSPHORUS_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        register("red_phosphorus_block", new BlockItem(RED_PHOSPHORUS_BLOCK, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS)));
-        register("soul_jack_o_lantern", new BlockItem(SOUL_JACK_O_LANTERN, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        register("iron_stand", new BlockItem(IRON_STAND, new Item.Settings()));
+        register("iron_trivet", new BlockItem(IRON_TRIVET, new Item.Settings()));
+        register("phosphorus_ore", new BlockItem(PHOSPHORUS_ORE, new Item.Settings()));
+        register("white_phosphorus_block", new BlockItem(WHITE_PHOSPHORUS_BLOCK, new Item.Settings()));
+        register("red_phosphorus_block", new BlockItem(RED_PHOSPHORUS_BLOCK, new Item.Settings()));
+        register("soul_jack_o_lantern", new BlockItem(SOUL_JACK_O_LANTERN, new Item.Settings()));
         register("text_block", new BlockItem(TEST, new Item.Settings()));
         /* Fluid */
         register("phosphorus_acid_bucket", PHOSPHORICACID_BUCKET);
@@ -111,6 +109,6 @@ public class Items {
     }
 
     private static void register(String path, Item item) {
-        Registry.register(Registry.ITEM, ofModIdentifier(path), item);
+        Registry.register(Registries.ITEM, ofModIdentifier(path), item);
     }
 }

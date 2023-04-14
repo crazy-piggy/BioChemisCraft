@@ -12,6 +12,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
@@ -22,11 +23,6 @@ public abstract class PhosphoricAcid extends FlowableFluid {
     @Override
     public boolean matchesType(Fluid fluid) {
         return fluid == getStill() || fluid == getFlowing();
-    }
-
-    @Override
-    protected boolean isInfinite() {
-        return false;
     }
 
     @Override
@@ -87,6 +83,11 @@ public abstract class PhosphoricAcid extends FlowableFluid {
         }
 
         @Override
+        protected boolean isInfinite(World world) {
+            return false;
+        }
+
+        @Override
         public int getLevel(FluidState fluidState) {
             return fluidState.get(LEVEL);
         }
@@ -98,6 +99,11 @@ public abstract class PhosphoricAcid extends FlowableFluid {
     }
 
     public static class Still extends PhosphoricAcid {
+        @Override
+        protected boolean isInfinite(World world) {
+            return false;
+        }
+
         @Override
         public int getLevel(FluidState fluidState) {
             return 8;

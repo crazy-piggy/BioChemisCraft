@@ -5,7 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 
 import static io.github.biochemiscraft.Main.ofModIdentifier;
 import static io.github.biochemiscraft.fluid.Fluids.PHOSPHORICACID_STILL;
@@ -40,6 +41,6 @@ public class Blocks {
     }
 
     private static void register(String path, Block block) {
-        Registry.register(Registry.BLOCK, ofModIdentifier(path), block);
+        Registry.register(Registries.BLOCK, ofModIdentifier(path), block);
     }
 }

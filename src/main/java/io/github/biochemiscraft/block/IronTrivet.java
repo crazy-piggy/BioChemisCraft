@@ -40,9 +40,8 @@ public class IronTrivet extends HorizontalFacingBlock implements Waterloggable {
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState()
-                .with(Properties.HORIZONTAL_FACING, ctx.getPlayerFacing().getOpposite())
                 .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER)
-                .with(FACING, ctx.getPlayerFacing().getOpposite());
+                .with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
     @Override
@@ -53,7 +52,7 @@ public class IronTrivet extends HorizontalFacingBlock implements Waterloggable {
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (state.get(WATERLOGGED))
-            world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 }
