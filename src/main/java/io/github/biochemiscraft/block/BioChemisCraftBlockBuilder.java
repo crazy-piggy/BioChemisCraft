@@ -5,6 +5,7 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -93,9 +94,8 @@ public class BioChemisCraftBlockBuilder {
         @Override
         public BlockState getPlacementState(ItemPlacementContext ctx) {
             return this.getDefaultState()
-                    .with(HORIZONTAL_FACING, ctx.getPlayerFacing().getOpposite())
                     .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER)
-                    .with(FACING, ctx.getPlayerFacing().getOpposite());
+                    .with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
         }
 
         @Override
@@ -106,7 +106,7 @@ public class BioChemisCraftBlockBuilder {
         @Override
         public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
             if (state.get(WATERLOGGED))
-                world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+                world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
             return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
         }
     }
