@@ -3,7 +3,6 @@ package io.github.biochemiscraft.block;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.FluidBlock;
-import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -13,14 +12,6 @@ import static io.github.biochemiscraft.fluid.Fluids.PHOSPHORICACID_STILL;
 import static net.minecraft.block.Blocks.WATER;
 
 public class Blocks {
-    public static final Block TEST = new BioChemisCraftBlockBuilder()
-            .minX(0.0)
-            .minY(0.0)
-            .minZ(0.0)
-            .maxX(1.0)
-            .maxY(0.5)
-            .maxZ(1.0)
-            .build(Block.Settings.of(Material.BAMBOO, MapColor.BLACK));
     public static final IronTrivet IRON_TRIVET = new IronTrivet(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
     public static final IronStand IRON_STAND = new IronStand(FabricBlockSettings.of(Material.METAL).hardness(0.1f));
     public static final Block PHOSPHORUS_ORE = new Block(FabricBlockSettings.of(Material.METAL).hardness(1.0f));
@@ -36,7 +27,6 @@ public class Blocks {
         register("white_phosphorus_block", WHITE_PHOSPHORUS_BLOCK);
         register("red_phosphorus_block", RED_PHOSPHORUS_BLOCK);
         register("soul_jack_o_lantern", SOUL_JACK_O_LANTERN);
-        register("text_block", TEST);
         register("phosphorus_acid", PHOSPHORICACID);
     }
 

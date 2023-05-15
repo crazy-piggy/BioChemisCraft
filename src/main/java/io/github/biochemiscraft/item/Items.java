@@ -15,7 +15,10 @@ import static net.minecraft.item.Items.BUCKET;
 public class Items {
     public static final Item RED_PHOSPHORUS = new Item(new Item.Settings());
     public static final Item PHOSPHORICACID_BUCKET = new BucketItem(PHOSPHORICACID_STILL, new Item.Settings().recipeRemainder(BUCKET).maxCount(1));
-
+    public static final Item MONOCLINIC_SULPHUR = new Item(new Item.Settings());
+    public static final Item RHOMBIC_SULPHUR = new Item(new Item.Settings());
+    public static final Item ELASTIC_SULPHUR = new Item(new Item.Settings());
+    public static final Item SULPHUR_POWDER = new Item(new Item.Settings());
     ///////////////////////////////////////////////////////////////////////////
     // Equipment
     ///////////////////////////////////////////////////////////////////////////
@@ -76,11 +79,14 @@ public class Items {
         register("white_phosphorus_block", new BlockItem(WHITE_PHOSPHORUS_BLOCK, new Item.Settings()));
         register("red_phosphorus_block", new BlockItem(RED_PHOSPHORUS_BLOCK, new Item.Settings()));
         register("soul_jack_o_lantern", new BlockItem(SOUL_JACK_O_LANTERN, new Item.Settings()));
-        register("text_block", new BlockItem(TEST, new Item.Settings()));
         /* Fluid */
         register("phosphorus_acid_bucket", PHOSPHORICACID_BUCKET);
         /* Item */
         register("red_phosphorus", RED_PHOSPHORUS);
+        register("monoclinic_sulphur", MONOCLINIC_SULPHUR);
+        register("rhombic_sulphur", RHOMBIC_SULPHUR);
+        register("elastic_sulphur", ELASTIC_SULPHUR);
+        register("sulphur_powder", SULPHUR_POWDER);
         /* Equipment */
         register("iron_stand_ring", IRON_STAND_RING);
         register("iron_stand_base", IRON_STAND_BASE);
