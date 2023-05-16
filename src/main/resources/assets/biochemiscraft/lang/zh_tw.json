@@ -1,6 +1,6 @@
 {
-  "block.chemiscraft.iron_stand": "鉄架台",
-  "block.chemiscraft.iron_trivet": "鉄三角架",
+  "block.biochemiscraft.iron_stand": "鉄架台",
+  "block.biochemiscraft.iron_trivet": "鉄三角架",
 
   "item.biochemiscraft.iron_stand_ring": "鉄架台-鐵圈",
   "item.biochemiscraft.iron_stand_base": "鉄架台-底座",
@@ -30,12 +30,18 @@
   "block.biochemiscraft.white_phosphorus_block": "白磷塊",
   "block.biochemiscraft.red_phosphorus_block": "红磷塊",
   "block.biochemiscraft.phosphorus_ore": "磷礦",
+
+  "item.biochemiscraft.orthorhombic_sulphur": "正交硫",
+  "item.biochemiscraft.monoclinic_sulphur": "單斜硫",
+  "item.biochemiscraft.amorphous_sulphur": "彈性硫",
+  "item.biochemiscraft.sulphur_powder": "硫粉",
+
   "block.biochemiscraft.soul_jack_o_lantern": "靈魂南瓜燈",
 
   "item.biochemiscraft.phosphorus.tooltip": "§m§o一 鍵 回 城",
 
-  "itemGroup.biochemiscraft.element_group": "化學工藝-元素",
-  "itemGroup.biochemiscraft.equipment_group": "化學工藝-設備",
+  "itemGroup.biochemiscraft.element_group": "生化工藝-元素",
+  "itemGroup.biochemiscraft.equipment_group": "生化工藝-設備",
 
   "effect.biochemiscraft.acute_phosphorus_poisoning": "急性磷中毒"
 }

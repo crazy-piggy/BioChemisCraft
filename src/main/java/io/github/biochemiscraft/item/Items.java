@@ -1,23 +1,27 @@
 package io.github.biochemiscraft.item;
 
+import io.github.biochemiscraft.block.Blocks;
 import io.github.biochemiscraft.material.RodSword;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.item.*;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.BucketItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.SwordItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 import static io.github.biochemiscraft.Main.ofModIdentifier;
 import static io.github.biochemiscraft.block.Blocks.*;
-import static io.github.biochemiscraft.effect.Effects.ACUTE_PHOSPHORUS_POISONING;
 import static io.github.biochemiscraft.fluid.Fluids.PHOSPHORICACID_STILL;
+import static net.minecraft.item.Items.BLAZE_POWDER;
 import static net.minecraft.item.Items.BUCKET;
 
 public class Items {
     public static final Item RED_PHOSPHORUS = new Item(new Item.Settings());
     public static final Item PHOSPHORICACID_BUCKET = new BucketItem(PHOSPHORICACID_STILL, new Item.Settings().recipeRemainder(BUCKET).maxCount(1));
+    public static final Item ORTHORHOMBIC_SULPHUR = new Item(new Item.Settings());
     public static final Item MONOCLINIC_SULPHUR = new Item(new Item.Settings());
-    public static final Item RHOMBIC_SULPHUR = new Item(new Item.Settings());
-    public static final Item ELASTIC_SULPHUR = new Item(new Item.Settings());
+    public static final Item AMORPHOUS_SULPHUR = new Item(new Item.Settings());
     public static final Item SULPHUR_POWDER = new Item(new Item.Settings());
     ///////////////////////////////////////////////////////////////////////////
     // Equipment
@@ -35,13 +39,13 @@ public class Items {
 
     public static final Phosphorus WHITE_PHOSPHORUS = new Phosphorus(new Item
             .Settings()
-            .food(new FoodComponent.Builder()
+            /*.food(new FoodComponent.Builder()
                     .hunger(1)
                     .saturationModifier(1)
                     .alwaysEdible()
                     .snack()
                     .statusEffect(new StatusEffectInstance(ACUTE_PHOSPHORUS_POISONING, 50, 1), 100.0f)
-                    .build()));
+                    .build())*/);
 
     ///////////////////////////////////////////////////////////////////////////
     // Hydrogen
@@ -83,9 +87,9 @@ public class Items {
         register("phosphorus_acid_bucket", PHOSPHORICACID_BUCKET);
         /* Item */
         register("red_phosphorus", RED_PHOSPHORUS);
+        register("orthorhombic_sulphur", ORTHORHOMBIC_SULPHUR);
         register("monoclinic_sulphur", MONOCLINIC_SULPHUR);
-        register("rhombic_sulphur", RHOMBIC_SULPHUR);
-        register("elastic_sulphur", ELASTIC_SULPHUR);
+        register("amorphous_sulphur", AMORPHOUS_SULPHUR);
         register("sulphur_powder", SULPHUR_POWDER);
         /* Equipment */
         register("iron_stand_ring", IRON_STAND_RING);
@@ -116,5 +120,13 @@ public class Items {
 
     private static void register(String path, Item item) {
         Registry.register(Registries.ITEM, ofModIdentifier(path), item);
+    }
+
+    public static void FuelRegister() {
+        FuelRegistry.INSTANCE.add(Items.WHITE_PHOSPHORUS, 200);
+        FuelRegistry.INSTANCE.add(Blocks.WHITE_PHOSPHORUS_BLOCK, 2000);
+        FuelRegistry.INSTANCE.add(Items.RED_PHOSPHORUS, 200);
+        FuelRegistry.INSTANCE.add(Blocks.RED_PHOSPHORUS_BLOCK, 2000);
+        FuelRegistry.INSTANCE.add(BLAZE_POWDER, 1200);
     }
 }

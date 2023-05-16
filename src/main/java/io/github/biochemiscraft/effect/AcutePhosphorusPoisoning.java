@@ -29,7 +29,7 @@ public class AcutePhosphorusPoisoning extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        if (entity instanceof PlayerEntity) entity.damage(new DamageSource(new RegistryEntry<>() {
+        if (entity instanceof PlayerEntity) entity.damage(new DamageSource(new RegistryEntry<DamageType>() {
             @Override
             public DamageType value() {
                 return null;
@@ -84,6 +84,7 @@ public class AcutePhosphorusPoisoning extends StatusEffect {
             public boolean ownerEquals(RegistryEntryOwner<DamageType> owner) {
                 return false;
             }
-        }), 15.0f)/*entity.damage(new DamageSource(DamageEffects.POKING), 15.0f + amplifier)*/;
+        }), 15.0f);
+        /*entity.damage(new DamageSource(DamageEffects.POKING), 15.0f + amplifier)*/
     }
 }

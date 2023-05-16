@@ -7,7 +7,6 @@ import io.github.biochemiscraft.item.Items;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -17,7 +16,6 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
 import static io.github.biochemiscraft.effect.Effects.ACUTE_PHOSPHORUS_POISONING;
-import static net.minecraft.item.Items.BLAZE_POWDER;
 
 public class Main implements ModInitializer {
     public static final String MODID = "biochemiscraft";
@@ -39,16 +37,11 @@ public class Main implements ModInitializer {
         Fluids.register();
         Blocks.register();
         Items.register();
+        Items.FuelRegister();
         ItemGroups.register();
         /*Effects*/
         Registry.register(Registries.STATUS_EFFECT, ofModIdentifier("acute_phosphorus_poisoning"), ACUTE_PHOSPHORUS_POISONING);
         /*Ores*/
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, PHOSPHORUS_ORE_PLACED_KEY);
-        /*Fuels*/
-        FuelRegistry.INSTANCE.add(Items.WHITE_PHOSPHORUS, 200);
-        FuelRegistry.INSTANCE.add(Blocks.WHITE_PHOSPHORUS_BLOCK, 2000);
-        FuelRegistry.INSTANCE.add(Items.RED_PHOSPHORUS, 200);
-        FuelRegistry.INSTANCE.add(Blocks.RED_PHOSPHORUS_BLOCK, 2000);
-        FuelRegistry.INSTANCE.add(BLAZE_POWDER, 1200);
     }
 }

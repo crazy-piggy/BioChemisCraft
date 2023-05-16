@@ -30,12 +30,18 @@
   "block.biochemiscraft.white_phosphorus_block": "White phosphorus block",
   "block.biochemiscraft.red_phosphorus_block": "Red phosphorus block",
   "block.biochemiscraft.phosphorus_ore": "Phosphorus ore",
+
+  "item.biochemiscraft.orthorhombic_sulphur": "Orthorhombic sulphur",
+  "item.biochemiscraft.monoclinic_sulphur": "Monoclinic sulphur",
+  "item.biochemiscraft.amorphous_sulphur": "Amorphous sulphur",
+  "item.biochemiscraft.sulphur_powder": "Sulphur powder",
+
   "block.biochemiscraft.soul_jack_o_lantern": "Soul Jack 'o lantern",
 
-  "item.biochemiscraft.phosphorus.tooltip": "§m§oBack to spawn point with one click.",
+  "item.biochemiscraft.phosphorus.tooltip": "Back to spawn point with one click.",
 
-  "itemGroup.biochemiscraft.element_group": "ChemisCraft-Element",
-  "itemGroup.biochemiscraft.equipment_group": "ChemisCraft-Equipment",
+  "itemGroup.biochemiscraft.element_group": "BioChemisCraft-Element",
+  "itemGroup.biochemiscraft.equipment_group": "BioChemisCraft-Equipment",
 
   "effect.biochemiscraft.acute_phosphorus_poisoning": "Acute phosphorus poisoning"
 }

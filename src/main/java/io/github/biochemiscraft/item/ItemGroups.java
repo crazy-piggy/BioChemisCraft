@@ -18,6 +18,19 @@ public class ItemGroups {
         ItemGroupEvents.modifyEntriesEvent(ELEMENT).register(content -> {
             content.add(HYDROGEN_1);
             content.add(HYDROGEN_2);
+            content.add(HYDROGEN_3);
+            content.add(HYDROGEN_4);
+            content.add(HYDROGEN_5);
+            content.add(HYDROGEN_6);
+            content.add(HYDROGEN_7);
+            content.add(HELIUM_3);
+            content.add(HELIUM_4);
+            content.add(HELIUM_5);
+            content.add(HELIUM_6);
+            content.add(HELIUM_7);
+            content.add(HELIUM_8);
+            content.add(HELIUM_9);
+            content.add(HELIUM_10);
         });
         ItemGroupEvents.modifyEntriesEvent(EQUIPMENT).register(content -> {
             content.add(IRON_STAND);
