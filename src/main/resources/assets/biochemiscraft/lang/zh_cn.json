@@ -40,8 +40,9 @@
 
   "item.biochemiscraft.phosphorus.tooltip": "一键回城",
 
-  "itemGroup.biochemiscraft.element_group": "生化工艺-元素",
+  "itemGroup.biochemiscraft.elemental_group": "生化工艺-元素",
   "itemGroup.biochemiscraft.equipment_group": "生化工艺-设备",
+  "itemGroup.biochemiscraft.nuclide_group": "生化工艺-核素",
 
   "effect.biochemiscraft.acute_phosphorus_poisoning": "急性磷中毒"
 }

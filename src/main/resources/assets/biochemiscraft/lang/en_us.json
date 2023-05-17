@@ -40,8 +40,9 @@
 
   "item.biochemiscraft.phosphorus.tooltip": "Back to spawn point with one click.",
 
-  "itemGroup.biochemiscraft.element_group": "BioChemisCraft-Element",
+  "itemGroup.biochemiscraft.elemental_group": "BioChemisCraft-Elemental",
   "itemGroup.biochemiscraft.equipment_group": "BioChemisCraft-Equipment",
+  "itemGroup.biochemiscraft.nuclide_group": "BioChemisCraft-Nuclide",
 
   "effect.biochemiscraft.acute_phosphorus_poisoning": "Acute phosphorus poisoning"
 }

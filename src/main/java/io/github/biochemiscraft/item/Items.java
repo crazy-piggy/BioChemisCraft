@@ -128,5 +128,9 @@ public class Items {
         FuelRegistry.INSTANCE.add(Items.RED_PHOSPHORUS, 200);
         FuelRegistry.INSTANCE.add(Blocks.RED_PHOSPHORUS_BLOCK, 2000);
         FuelRegistry.INSTANCE.add(BLAZE_POWDER, 1200);
+        FuelRegistry.INSTANCE.add(ORTHORHOMBIC_SULPHUR, 300);
+        FuelRegistry.INSTANCE.add(MONOCLINIC_SULPHUR, 300);
+        FuelRegistry.INSTANCE.add(AMORPHOUS_SULPHUR, 300);
+        FuelRegistry.INSTANCE.add(SULPHUR_POWDER, 300);
     }
 }

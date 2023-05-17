@@ -38,10 +38,11 @@
 
   "block.biochemiscraft.soul_jack_o_lantern": "靈魂南瓜燈",
 
-  "item.biochemiscraft.phosphorus.tooltip": "§m§o一 鍵 回 城",
+  "item.biochemiscraft.phosphorus.tooltip": "一 鍵 回 城",
 
-  "itemGroup.biochemiscraft.element_group": "生化工藝-元素",
+  "itemGroup.biochemiscraft.elemental_group": "生化工藝-元素",
   "itemGroup.biochemiscraft.equipment_group": "生化工藝-設備",
+  "itemGroup.biochemiscraft.nuclide_group": "生化工藝-核素",
 
   "effect.biochemiscraft.acute_phosphorus_poisoning": "急性磷中毒"
 }
