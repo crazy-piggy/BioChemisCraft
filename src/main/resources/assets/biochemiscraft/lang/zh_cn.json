@@ -40,7 +40,8 @@
 
   "item.biochemiscraft.phosphorus.tooltip": "一键回城",
 
-  "itemGroup.biochemiscraft.elemental_group": "生化工艺-元素",
+  "itemGroup.biochemiscraft.elemental_group": "生化工艺-单质",
+  "itemGroup.biochemiscraft.elemental_block_group": "生化工艺-单质块",
   "itemGroup.biochemiscraft.equipment_group": "生化工艺-设备",
   "itemGroup.biochemiscraft.nuclide_group": "生化工艺-核素",
 

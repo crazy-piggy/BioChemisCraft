@@ -41,6 +41,7 @@
   "item.biochemiscraft.phosphorus.tooltip": "Back to spawn point with one click.",
 
   "itemGroup.biochemiscraft.elemental_group": "BioChemisCraft-Elemental",
+  "itemGroup.biochemiscraft.elemental_block_group": "BioChemisCraft-Elemental block",
   "itemGroup.biochemiscraft.equipment_group": "BioChemisCraft-Equipment",
   "itemGroup.biochemiscraft.nuclide_group": "BioChemisCraft-Nuclide",
 
