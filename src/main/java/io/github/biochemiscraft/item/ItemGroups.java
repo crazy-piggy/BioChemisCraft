@@ -4,17 +4,16 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
 
-import static io.github.biochemiscraft.Main.MODID;
+import static io.github.biochemiscraft.Main.ofModIdentifier;
 import static io.github.biochemiscraft.block.Blocks.*;
 import static io.github.biochemiscraft.item.Items.*;
 
 public class ItemGroups {
-    public static final ItemGroup ELEMENTAL = FabricItemGroup.builder(new Identifier(MODID, "elemental_group")).icon(() ->new ItemStack(WHITE_PHOSPHORUS)).build();
-    public static final ItemGroup ELEMENTAL_BLOCK = FabricItemGroup.builder(new Identifier(MODID, "elemental_block_group")).icon(() ->new ItemStack(WHITE_PHOSPHORUS_BLOCK)).build();
-    public static final ItemGroup EQUIPMENT = FabricItemGroup.builder(new Identifier(MODID, "equipment_group")).icon(() -> new ItemStack(IRON_STAND)).build();
-    public static final ItemGroup NUCLIDE = FabricItemGroup.builder(new Identifier(MODID, "nuclide_group")).icon(() -> new ItemStack(HYDROGEN_1)).build();
+    public static final ItemGroup ELEMENTAL = FabricItemGroup.builder(ofModIdentifier("elemental_group")).icon(() ->new ItemStack(WHITE_PHOSPHORUS)).build();
+    public static final ItemGroup ELEMENTAL_BLOCK = FabricItemGroup.builder(ofModIdentifier("elemental_block_group")).icon(() ->new ItemStack(WHITE_PHOSPHORUS_BLOCK)).build();
+    public static final ItemGroup EQUIPMENT = FabricItemGroup.builder(ofModIdentifier("equipment_group")).icon(() -> new ItemStack(IRON_STAND)).build();
+    public static final ItemGroup NUCLIDE = FabricItemGroup.builder(ofModIdentifier("nuclide_group")).icon(() -> new ItemStack(HYDROGEN_1)).build();
 
     public static void register() {
         ItemGroupEvents.modifyEntriesEvent(ELEMENTAL).register(content -> {

@@ -1,0 +1,6 @@
+{
+  "message_id": "acute_phosphorus_poisoning",
+  "exhaustion": 10.0,
+  "scaling": "when_caused_by_living_non_player",
+  "effects": "hurt"
+}

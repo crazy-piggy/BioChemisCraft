@@ -45,5 +45,8 @@
   "itemGroup.biochemiscraft.equipment_group": "生化工藝-設備",
   "itemGroup.biochemiscraft.nuclide_group": "生化工藝-核素",
 
-  "effect.biochemiscraft.acute_phosphorus_poisoning": "急性磷中毒"
+  "effect.biochemiscraft.acute_phosphorus_poisoning": "急性磷中毒",
+
+  "death.attack.acute_phosphorus_poisoning": "%s因急性磷中毒而亡。",
+  "death.attack.acute_phosphorus_poisoning.player": "%s在試圖逃離%s時急性磷中毒毒發身亡。"
 }

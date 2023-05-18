@@ -37,7 +37,7 @@ public class Main implements ModInitializer {
         Fluids.register();
         Blocks.register();
         Items.register();
-        Items.FuelRegister();
+        Items.registerFuels();
         ItemGroups.register();
         /*Effects*/
         Registry.register(Registries.STATUS_EFFECT, ofModIdentifier("acute_phosphorus_poisoning"), ACUTE_PHOSPHORUS_POISONING);

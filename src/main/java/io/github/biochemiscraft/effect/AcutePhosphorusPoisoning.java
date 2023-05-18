@@ -1,26 +1,21 @@
 package io.github.biochemiscraft.effect;
 
-import com.mojang.datafixers.util.Either;
+import io.github.biochemiscraft.Main;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.entry.RegistryEntryOwner;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
-
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import net.minecraft.registry.RegistryKeys;
 
 public class AcutePhosphorusPoisoning extends StatusEffect {
     public AcutePhosphorusPoisoning() {
         super(StatusEffectCategory.HARMFUL, 0x4E9331);
     }
+
+    public static final RegistryKey<DamageType> DT_ACUTE_PHOSPHORUS_POISONING = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, Main.ofModIdentifier("acute_phosphorus_poisoning"));
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
@@ -28,63 +23,15 @@ public class AcutePhosphorusPoisoning extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        if (entity instanceof PlayerEntity) entity.damage(new DamageSource(new RegistryEntry<DamageType>() {
-            @Override
-            public DamageType value() {
-                return null;
-            }
+    public void applyUpdateEffect(LivingEntity entity, int amplifier) {//data pack
 
-            @Override
-            public boolean hasKeyAndValue() {
-                return false;
-            }
+        float amount = 15.0f + amplifier;
 
-            @Override
-            public boolean matchesId(Identifier id) {
-                return false;
-            }
-
-            @Override
-            public boolean matchesKey(RegistryKey<DamageType> key) {
-                return false;
-            }
-
-            @Override
-            public boolean matches(Predicate<RegistryKey<DamageType>> predicate) {
-                return false;
-            }
-
-            @Override
-            public boolean isIn(TagKey<DamageType> tag) {
-                return false;
-            }
-
-            @Override
-            public Stream<TagKey<DamageType>> streamTags() {
-                return null;
-            }
-
-            @Override
-            public Either<RegistryKey<DamageType>, DamageType> getKeyOrValue() {
-                return null;
-            }
-
-            @Override
-            public Optional<RegistryKey<DamageType>> getKey() {
-                return Optional.empty();
-            }
-
-            @Override
-            public Type getType() {
-                return null;
-            }
-
-            @Override
-            public boolean ownerEquals(RegistryEntryOwner<DamageType> owner) {
-                return false;
-            }
-        }), 15.0f);
-        /*entity.damage(new DamageSource(DamageEffects.POKING), 15.0f + amplifier)*/
+        Registry<DamageType> registry = entity.world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE);
+        entity.damage(new DamageSource(registry.entryOf(DT_ACUTE_PHOSPHORUS_POISONING)), amount);
+        /*
+          baka4n
+         */
+        super.applyUpdateEffect(entity, amplifier);
     }
 }

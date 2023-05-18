@@ -45,5 +45,8 @@
   "itemGroup.biochemiscraft.equipment_group": "BioChemisCraft-Equipment",
   "itemGroup.biochemiscraft.nuclide_group": "BioChemisCraft-Nuclide",
 
-  "effect.biochemiscraft.acute_phosphorus_poisoning": "Acute phosphorus poisoning"
+  "effect.biochemiscraft.acute_phosphorus_poisoning": "Acute phosphorus poisoning",
+
+  "death.attack.acute_phosphorus_poisoning": "%s died of acute phosphorus poisoning.",
+  "death.attack.acute_phosphorus_poisoning.player": "%s died of acute phosphorus poisoning whilst trying to escape %s."
 }
