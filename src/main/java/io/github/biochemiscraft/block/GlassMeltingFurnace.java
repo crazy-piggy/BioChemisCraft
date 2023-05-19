@@ -1,31 +1,51 @@
 package io.github.biochemiscraft.block;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.AbstractFurnaceBlock;
-import net.minecraft.block.BlockState;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class SoulFurnace extends AbstractFurnaceBlock {
-    public SoulFurnace(AbstractBlock.Settings settings) {
-        super(settings);
+public class GlassMeltingFurnace extends AbstractFurnaceBlock {
+    public GlassMeltingFurnace(AbstractBlock.Settings settings) {
+        super(settings.nonOpaque().mapColor(MapColor.IRON_GRAY).noCollision());
+        setDefaultState(this.stateManager.getDefaultState()
+                .with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     }
 
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new FurnaceBlockEntity(pos, state);
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext ctx) {
+        Direction dir = state.get(FACING);
+        return switch (dir) {
+            case NORTH, SOUTH, EAST, WEST -> VoxelShapes.cuboid(0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
+            default -> VoxelShapes.fullCube();
+        };
+    }
+
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        return this.getDefaultState()
+                .with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
     @Nullable
@@ -39,7 +59,6 @@ public class SoulFurnace extends AbstractFurnaceBlock {
             player.openHandledScreen((NamedScreenHandlerFactory)blockEntity);
             player.incrementStat(Stats.INTERACT_WITH_FURNACE);
         }
-
     }
 
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {

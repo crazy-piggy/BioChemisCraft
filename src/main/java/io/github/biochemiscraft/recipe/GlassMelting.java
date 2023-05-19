@@ -7,14 +7,14 @@ import net.minecraft.text.Text;
 
 import java.util.Set;
 
-public class Soul extends AbstractFurnaceRecipeBookScreen {
-    private static final Text TOGGLE_SOUL_RECIPES_TEXT = Text.translatable("gui.recipebook.toggleRecipes.soul");
+public class GlassMelting extends AbstractFurnaceRecipeBookScreen {
+    private static final Text TOGGLE_GLASS_RECIPES_TEXT = Text.translatable("gui.recipebook.toggleRecipes.glass_melting");
 
-    public Soul() {
+    public GlassMelting() {
     }
 
     protected Text getToggleCraftableButtonText() {
-        return TOGGLE_SOUL_RECIPES_TEXT;
+        return TOGGLE_GLASS_RECIPES_TEXT;
     }
 
     protected Set<Item> getAllowedFuels() {

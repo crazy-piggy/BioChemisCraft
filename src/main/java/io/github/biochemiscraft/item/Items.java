@@ -81,6 +81,7 @@ public class Items {
         register("white_phosphorus_block", new BlockItem(WHITE_PHOSPHORUS_BLOCK, new Item.Settings()));
         register("red_phosphorus_block", new BlockItem(RED_PHOSPHORUS_BLOCK, new Item.Settings()));
         register("soul_jack_o_lantern", new BlockItem(SOUL_JACK_O_LANTERN, new Item.Settings()));
+        register("glass_melting_furnace", new BlockItem(GLASS_MELTING_FURNACE, new Item.Settings()));
         /* Fluid */
         register("phosphorus_acid_bucket", PHOSPHORICACID_BUCKET);
         /* Item */

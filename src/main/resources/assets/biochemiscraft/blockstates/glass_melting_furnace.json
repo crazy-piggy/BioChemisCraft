@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north": { "model": "biochemiscraft:block/glass_melting_furnace" },
+    "facing=east":  { "model": "biochemiscraft:block/glass_melting_furnace", "y": 90},
+    "facing=south": { "model": "biochemiscraft:block/glass_melting_furnace", "y": 180 },
+    "facing=west":  { "model": "biochemiscraft:block/glass_melting_furnace", "y": 270 },
+    "facing=up": {"model":"biochemiscraft:block/glass_melting_furnace"},
+    "facing=down": {"model": "biochemiscraft:block/glass_melting_furnace","x": 180}
+  }
+}
