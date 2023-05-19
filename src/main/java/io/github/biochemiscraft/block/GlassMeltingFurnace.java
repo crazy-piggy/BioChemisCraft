@@ -2,8 +2,6 @@ package io.github.biochemiscraft.block;
 
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -12,6 +10,7 @@ import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -20,13 +19,15 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 public class GlassMeltingFurnace extends AbstractFurnaceBlock {
+    public static final BooleanProperty LIT = Properties.LIT;
+
     public GlassMeltingFurnace(AbstractBlock.Settings settings) {
         super(settings.nonOpaque().mapColor(MapColor.IRON_GRAY).noCollision());
         setDefaultState(this.stateManager.getDefaultState()
-                .with(Properties.HORIZONTAL_FACING, Direction.NORTH));
+                .with(Properties.HORIZONTAL_FACING, Direction.NORTH)
+                .with(LIT, false));
     }
 
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
@@ -48,16 +49,12 @@ public class GlassMeltingFurnace extends AbstractFurnaceBlock {
                 .with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
-    @Nullable
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(world, type, BlockEntityType.FURNACE);
-    }
 
     protected void openScreen(World world, BlockPos pos, PlayerEntity player) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof FurnaceBlockEntity) {
             player.openHandledScreen((NamedScreenHandlerFactory)blockEntity);
-            player.incrementStat(Stats.INTERACT_WITH_FURNACE);
+            player.incrementStat(Stats.INTERACT_WITH_STONECUTTER);
         }
     }
 

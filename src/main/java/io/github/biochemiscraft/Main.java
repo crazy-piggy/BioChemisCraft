@@ -4,6 +4,7 @@ import io.github.biochemiscraft.block.Blocks;
 import io.github.biochemiscraft.fluid.Fluids;
 import io.github.biochemiscraft.item.ItemGroups;
 import io.github.biochemiscraft.item.Items;
+import io.github.biochemiscraft.recipe.Recipes;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -39,6 +40,7 @@ public class Main implements ModInitializer {
         Items.register();
         Items.registerFuels();
         ItemGroups.register();
+        Recipes.register();
         /*Effects*/
         Registry.register(Registries.STATUS_EFFECT, ofModIdentifier("acute_phosphorus_poisoning"), ACUTE_PHOSPHORUS_POISONING);
         /*Ores*/
