@@ -1,15 +1,15 @@
 package io.github.biochemiscraft.block;
 
+import io.github.biochemiscraft.block.entity.GlassMeltingFurnaceEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.FurnaceBlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.stat.Stats;
+import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -19,19 +19,24 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class GlassMeltingFurnace extends AbstractFurnaceBlock {
+import static io.github.biochemiscraft.block.entity.BlockEntities.GLASS_MELTING_FURNACE_ENTITY;
+import static net.minecraft.block.HorizontalFacingBlock.FACING;
+
+public class GlassMeltingFurnace extends BlockWithEntity implements BlockEntityProvider {
     public static final BooleanProperty LIT = Properties.LIT;
 
-    public GlassMeltingFurnace(AbstractBlock.Settings settings) {
+    protected GlassMeltingFurnace(Settings settings) {
         super(settings.nonOpaque().mapColor(MapColor.IRON_GRAY).noCollision());
         setDefaultState(this.stateManager.getDefaultState()
                 .with(Properties.HORIZONTAL_FACING, Direction.NORTH)
                 .with(LIT, false));
     }
 
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new FurnaceBlockEntity(pos, state);
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
+        stateManager.add(Properties.HORIZONTAL_FACING, LIT);
     }
 
     @Override
@@ -49,13 +54,21 @@ public class GlassMeltingFurnace extends AbstractFurnaceBlock {
                 .with(Properties.HORIZONTAL_FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
 
-    protected void openScreen(World world, BlockPos pos, PlayerEntity player) {
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof FurnaceBlockEntity) {
-            player.openHandledScreen((NamedScreenHandlerFactory)blockEntity);
-            player.incrementStat(Stats.INTERACT_WITH_STONECUTTER);
-        }
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new GlassMeltingFurnaceEntity(pos, state);
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, GLASS_MELTING_FURNACE_ENTITY, GlassMeltingFurnaceEntity::tick);
     }
 
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {

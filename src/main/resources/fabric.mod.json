@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "io.github.biochemiscraft.Main"
+    ],
+    "client": [
+      "io.github.biochemiscraft.ClientMain"
     ]
   },
 

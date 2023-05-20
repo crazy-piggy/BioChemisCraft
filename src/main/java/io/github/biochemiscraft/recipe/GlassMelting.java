@@ -98,7 +98,7 @@ public class GlassMelting implements Recipe<SimpleInventory> {
             for (Ingredient ing : recipe.getIngredients()) {
                 ing.write(buf);
             }
-            buf.writeItemStack(recipe.getOutput(/*找不到参数*/));
+            buf.writeItemStack(recipe.getOutput(null));
         }
     }
 }
