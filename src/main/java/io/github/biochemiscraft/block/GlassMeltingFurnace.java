@@ -5,6 +5,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
@@ -12,6 +13,9 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -71,6 +75,11 @@ public class GlassMeltingFurnace extends BlockWithEntity implements BlockEntityP
         return checkType(type, GLASS_MELTING_FURNACE_ENTITY, GlassMeltingFurnaceEntity::tick);
     }
 
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        return super.onUse(state, world, pos, player, hand, hit);
+    }
+
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         if (state.get(LIT)) {
             double d = (double)pos.getX() + 0.5;
@@ -91,4 +100,22 @@ public class GlassMeltingFurnace extends BlockWithEntity implements BlockEntityP
             world.addParticle(ParticleTypes.FLAME, d + i, e + j, f + k, 0.0, 0.0, 0.0);
         }
     }
+
+    /*
+     *100   @Override
+     *101   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+     *102       if (!world.isClient) {
+     *103           BlockEntity blockEntity = world.getBlockEntity(pos);
+     *104           if (blockEntity instanceof GlassMeltingFurnaceEntity) {
+     *105               player.openHandledScreen((ExtendedScreenHandlerFactory) blockEntity);
+     *106           }
+     *107       }
+     *108       return ActionResult.SUCCESS;
+     *109   }
+     *      //  When player tries to use this block, player can use the block, but the game can't open the screen and throw
+     *      //  an exception:
+     *      //  [Server thread/ERROR] (Minecraft) Failed to handle packet net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket@79bd9201, suppressing error
+     *      //  java.lang.ClassCastException: class io.github.biochemiscraft.block.entity.GlassMeltingFurnaceEntity cannot be cast to class net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory (io.github.biochemiscraft.block.entity.GlassMeltingFurnaceEntity and net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory are in unnamed module of loader net.fabricmc.loader.impl.launch.knot.KnotClassLoader @4667ae56)
+	 *      //  at io.github.biochemiscraft.block.GlassMeltingFurnace.onUse(GlassMeltingFurnace.java:105) ~[main/:?]
+     */
 }

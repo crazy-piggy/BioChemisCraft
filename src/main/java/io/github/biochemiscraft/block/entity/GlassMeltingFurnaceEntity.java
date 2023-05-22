@@ -1,5 +1,6 @@
 package io.github.biochemiscraft.block.entity;
 
+import io.github.biochemiscraft.recipe.GlassMelting;
 import io.github.biochemiscraft.screen.GlassMeltingFurnaceScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -9,7 +10,6 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.PropertyDelegate;
@@ -19,6 +19,9 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
+import java.util.Optional;
 
 public class GlassMeltingFurnaceEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
@@ -67,13 +70,6 @@ public class GlassMeltingFurnaceEntity extends BlockEntity implements NamedScree
         return new GlassMeltingFurnaceScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
     }
 
-    protected void openScreen(World world, BlockPos pos, PlayerEntity player) {
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof GlassMeltingFurnaceEntity) {
-            player.openHandledScreen((GlassMeltingFurnaceEntity) blockEntity);
-        }
-    }
-
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
@@ -115,9 +111,11 @@ public class GlassMeltingFurnaceEntity extends BlockEntity implements NamedScree
         for (int i = 0; i < entity.size();i++ ) {
             simpleInventory.setStack(i, entity.getStack(i));
         }
+        Optional<GlassMelting> recipe = Objects.requireNonNull(entity.getWorld()).getRecipeManager().getFirstMatch(GlassMelting.Type.INSTANCE, simpleInventory, entity.getWorld());
+
         if (hasRecipe(entity)) {
             entity.removeStack(1, 1);
-            entity.setStack(2, new ItemStack(Items.GLASS, entity.getStack(2).getCount() + 1));
+            entity.setStack(2, new ItemStack(recipe.get().getOutput(null).getItem(), recipe.get().getOutput(null).getCount() + 1));
             entity.resetProgress();
         }
     }
@@ -127,8 +125,8 @@ public class GlassMeltingFurnaceEntity extends BlockEntity implements NamedScree
         for (int i = 0; i < entity.size();i++ ) {
             simpleInventory.setStack(i, entity.getStack(i));
         }
-        boolean hasFuelInFirstSlot = entity.getStack(1).getItem() == Items.SAND;
-        return hasFuelInFirstSlot && canInsertAmountIntoOutputSlot(simpleInventory) && canInsertItemIntoOutputSlot(simpleInventory, Items.GLASS);
+        Optional<GlassMelting> match = Objects.requireNonNull(entity.getWorld()).getRecipeManager().getFirstMatch(GlassMelting.Type.INSTANCE, simpleInventory, entity.getWorld());
+        return match.isPresent() && canInsertAmountIntoOutputSlot(simpleInventory) && canInsertItemIntoOutputSlot(simpleInventory, match.get().getOutput(null).getItem());
     }
 
     private static boolean canInsertAmountIntoOutputSlot(SimpleInventory simpleInventory) {
