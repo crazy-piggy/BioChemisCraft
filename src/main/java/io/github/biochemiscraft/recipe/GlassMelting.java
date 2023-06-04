@@ -2,6 +2,7 @@ package io.github.biochemiscraft.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import io.github.biochemiscraft.Main;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
@@ -13,6 +14,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
 public class GlassMelting implements Recipe<SimpleInventory> {
+    public static final Identifier ID = Main.ofModIdentifier("glass_melting");
     private final Identifier id;
     private final ItemStack output;
     private final DefaultedList<Ingredient> recipeItems;
@@ -21,6 +23,7 @@ public class GlassMelting implements Recipe<SimpleInventory> {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
+
     }
 
     @Override
@@ -33,7 +36,7 @@ public class GlassMelting implements Recipe<SimpleInventory> {
 
     @Override
     public ItemStack craft(SimpleInventory inventory, DynamicRegistryManager registryManager) {
-        return output;
+        return output.copy();
     }
 
     @Override
@@ -43,7 +46,7 @@ public class GlassMelting implements Recipe<SimpleInventory> {
 
     @Override
     public ItemStack getOutput(DynamicRegistryManager registryManager) {
-        return output.copy();
+        return output;
     }
 
     @Override
@@ -58,25 +61,18 @@ public class GlassMelting implements Recipe<SimpleInventory> {
 
     @Override
     public RecipeType<?> getType() {
-        return Type.INSTANCE;
-    }
-
-    public static class Type implements RecipeType<GlassMelting> {
-        private Type() {}
-        public static final Type INSTANCE = new Type();
-        public static final String ID = "glass_melting";
+        return Recipes.GLASS_MELTING_TYPE;
     }
 
     public static class Serializer implements RecipeSerializer<GlassMelting> {
         public static final Serializer INSTANCE = new Serializer();
-        public static final String ID = "glass_melting";
 
         @Override
         public GlassMelting read(Identifier id, JsonObject json) {
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
             JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
             DefaultedList<Ingredient> inputs = DefaultedList.ofSize(1, Ingredient.EMPTY);
-            for (int i = 0; 1 < inputs.size(); i++) {
+            for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
             return new GlassMelting(id, output, inputs);

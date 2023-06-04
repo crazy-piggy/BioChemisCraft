@@ -7,6 +7,10 @@
 
 我们重点做fabric版的BioChemisCraft,尽管我们在GitHub上有forge版的代码库
 
+## 声明
+
+本模组只会发布在GitHub，BiliBili及CurseForge上，其余皆为转载或抄袭。
+
 ## To translators
 
 We welcome the support of the people in various languages to help us translate this project. We plan to internationalize it in the future.

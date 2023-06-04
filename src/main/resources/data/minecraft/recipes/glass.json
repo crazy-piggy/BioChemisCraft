@@ -1,5 +1,5 @@
 {
-  "type": "biochemiscraft:glass_meltiung",
+  "type": "biochemiscraft:glass_melting",
   "ingredients": [
     {
       "tag": "minecraft:sand"

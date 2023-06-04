@@ -11,14 +11,6 @@ import org.jetbrains.annotations.Nullable;
 public interface ImplementedInventory extends SidedInventory {
     DefaultedList<ItemStack> getItems();
 
-    static ImplementedInventory of(DefaultedList<ItemStack> items) {
-        return () -> items;
-    }
-
-    static ImplementedInventory ofSize(int size) {
-        return of(DefaultedList.ofSize(size, ItemStack.EMPTY));
-    }
-
     @Override
     default int[] getAvailableSlots(Direction side) {
         int[] result = new int[getItems().size()];
@@ -76,6 +68,7 @@ public interface ImplementedInventory extends SidedInventory {
     }
 
     @Override
+        // Override if you want behavior.
     default void setStack(int slot, ItemStack stack) {
         getItems().set(slot, stack);
         if (stack.getCount() > getMaxCountPerStack()) {
@@ -90,7 +83,6 @@ public interface ImplementedInventory extends SidedInventory {
 
     @Override
     default void markDirty() {
-        // Override if you want behavior.
     }
 
     @Override

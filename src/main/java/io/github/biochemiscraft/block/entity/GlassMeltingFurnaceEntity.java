@@ -1,7 +1,9 @@
 package io.github.biochemiscraft.block.entity;
 
 import io.github.biochemiscraft.recipe.GlassMelting;
+import io.github.biochemiscraft.recipe.Recipes;
 import io.github.biochemiscraft.screen.GlassMeltingFurnaceScreenHandler;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,19 +13,21 @@ import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 import java.util.Optional;
 
-public class GlassMeltingFurnaceEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+public class GlassMeltingFurnaceEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
 
     protected final PropertyDelegate propertyDelegate;
@@ -34,24 +38,33 @@ public class GlassMeltingFurnaceEntity extends BlockEntity implements NamedScree
         super(BlockEntities.GLASS_MELTING_FURNACE_ENTITY, pos, state);
         this.propertyDelegate = new PropertyDelegate() {
             public int get(int index) {
-                switch (index) {
-                    case 0: return GlassMeltingFurnaceEntity.this.progress;
-                    case 1: return GlassMeltingFurnaceEntity.this.maxProgress;
-                    default: return 0;
-                }
+                return switch (index) {
+                    case 0 -> GlassMeltingFurnaceEntity.this.progress;
+                    case 1 -> GlassMeltingFurnaceEntity.this.maxProgress;
+                    default -> 0;
+                };
             }
 
             public void set(int index, int value) {
                 switch (index) {
-                    case 0:  GlassMeltingFurnaceEntity.this.progress = value; break;
-                    case 1:  GlassMeltingFurnaceEntity.this.maxProgress = value; break;
+                    case 0 -> GlassMeltingFurnaceEntity.this.progress = value;
+                    case 1 -> GlassMeltingFurnaceEntity.this.maxProgress = value;
                 }
             }
 
             public int size() {
-                return 4;
+                return 2;
             }
         };
+    }
+
+    @Override
+    public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
+    }
+
+    @Override
+    public int[] getAvailableSlots(Direction side) {
+        return ImplementedInventory.super.getAvailableSlots(side);
     }
 
     @Override
@@ -111,7 +124,7 @@ public class GlassMeltingFurnaceEntity extends BlockEntity implements NamedScree
         for (int i = 0; i < entity.size();i++ ) {
             simpleInventory.setStack(i, entity.getStack(i));
         }
-        Optional<GlassMelting> recipe = Objects.requireNonNull(entity.getWorld()).getRecipeManager().getFirstMatch(GlassMelting.Type.INSTANCE, simpleInventory, entity.getWorld());
+        Optional<GlassMelting> recipe = Objects.requireNonNull(entity.getWorld()).getRecipeManager().getFirstMatch(Recipes.GLASS_MELTING_TYPE, simpleInventory, entity.getWorld());
 
         if (hasRecipe(entity)) {
             entity.removeStack(1, 1);
@@ -125,7 +138,7 @@ public class GlassMeltingFurnaceEntity extends BlockEntity implements NamedScree
         for (int i = 0; i < entity.size();i++ ) {
             simpleInventory.setStack(i, entity.getStack(i));
         }
-        Optional<GlassMelting> match = Objects.requireNonNull(entity.getWorld()).getRecipeManager().getFirstMatch(GlassMelting.Type.INSTANCE, simpleInventory, entity.getWorld());
+        Optional<GlassMelting> match = Objects.requireNonNull(entity.getWorld()).getRecipeManager().getFirstMatch(Recipes.GLASS_MELTING_TYPE, simpleInventory, entity.getWorld());
         return match.isPresent() && canInsertAmountIntoOutputSlot(simpleInventory) && canInsertItemIntoOutputSlot(simpleInventory, match.get().getOutput(null).getItem());
     }
 
